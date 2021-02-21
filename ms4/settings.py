@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+# import env variables
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,8 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$@09fn0a_eitx(=w07n@^@8qa^gssc(ekv-s^pqgavn&pwl_rp'
+SECRET_KEY = env('SECRET_KEY')
 
+
+# TODO: SET TO FALSE BEFORE DEPLOY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -29,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'designs.apps.DesignsConfig',
     'portfolio.apps.PortfolioConfig',
     'services.apps.ServicesConfig',
     'pages.apps.PagesConfig',
@@ -76,9 +85,19 @@ WSGI_APPLICATION = 'ms4.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': env('DATABASE_HOST'),
+
     }
+
+    # TODO: DELETE BEFORE DEPLOY
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 # Password validation
