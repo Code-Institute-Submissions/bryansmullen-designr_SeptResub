@@ -1,2 +1,18 @@
-<li><a href="{% url 'index' %}">Home</a></li>
-<li><a href="{% url 'about' %}">About</a></li>
+<!-- Home Link -->
+<li
+  {% if '/' == request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'index' %}">Home</a>
+</li>
+
+<!-- About Link -->
+<li
+  {% if '/about' == request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'about' %}">About</a></li>
