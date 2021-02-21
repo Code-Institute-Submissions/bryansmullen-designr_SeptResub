@@ -1,5 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap');
+
+/* global */
+
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+
+h1 {
+    font-family: 'Lobster', cursive;
+}
+
+
+/* footer */
 .social {
     display: flex;
     justify-content: space-between;
     margin-right: 50%;
+}
+
+
+/* home page */
+.background {
+    background-image: url('/static/img/home.jpg');
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.splash-container{
+    padding-top:25vh
+}
+
+.cta {
+font-family: 'Montserrat', sans-serif;
 }

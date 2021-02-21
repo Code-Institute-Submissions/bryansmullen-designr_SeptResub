@@ -185,6 +185,8 @@ The following data types will be used in the project, and an SQL table will be g
 
 [comment]: <> (- The photos used in this site were obtained from ...)
 
-[comment]: <> (### Acknowledgements)
+### Acknowledgements
+
+Home BG Photo by Max Vakhtbovych from Pexels
 
 [comment]: <> (- I received inspiration for this project from X)
