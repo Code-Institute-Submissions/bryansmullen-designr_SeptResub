@@ -8,15 +8,6 @@
 ><a href="{% url 'index' %}">Home</a>
 </li>
 
-<!-- About Link -->
-<li
-  {% if 'about' in request.path %}
-    class="active"
-  {% else %}
-    class=""
-  {% endif %}
-><a href="{% url 'about' %}">About</a></li>
-
 <!-- Services Link -->
 <li
   {% if 'services' in request.path %}
