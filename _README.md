@@ -189,4 +189,11 @@ The following data types will be used in the project, and an SQL table will be g
 
 Home BG Photo by Max Vakhtbovych from Pexels
 
+Design examples: 
+- Photo by Magda Ehlers from Pexels
+- Photo by Sy Donny from Pexels
+- Photo by Kaboompics .com from Pexels
+- Photo by Ann H from Pexels
+- Photo by eric anada from Pexels
+
 [comment]: <> (- I received inspiration for this project from X)
