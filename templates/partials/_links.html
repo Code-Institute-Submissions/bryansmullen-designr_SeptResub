@@ -34,3 +34,31 @@
     class=""
   {% endif %}
 ><a href="{% url 'my_designs' %}">My Designs</a></li>
+
+<!-- Register Link -->
+<li
+  {% if 'register' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'register' %}">Register</a></li>
+
+<!-- My Designs Link -->
+<li
+  {% if 'login' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'login' %}">Login</a></li>
+
+
+<!-- Account Link -->
+<li
+  {% if 'account' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'account' %}">Account</a></li>
