@@ -1,0 +1,52 @@
+<!-- Home Link -->
+<li
+    {% if '/' == request.path %}
+      class="active"
+    {% else %}
+      class=""
+    {% endif %}
+><a href="{% url 'index' %}">Home</a>
+</li>
+
+<!-- Portfolio Link -->
+<li
+    {% if 'portfolio' in request.path %}
+      class="active"
+    {% else %}
+      class=""
+    {% endif %}
+><a href="{% url 'portfolio' %}">Portfolio</a></li>
+
+<!-- Services Link -->
+<li
+    {% if 'services' in request.path %}
+      class="active"
+    {% else %}
+      class=""
+    {% endif %}
+><a href="{% url 'services' %}">Services</a></li>
+
+<!-- My Designs Link -->
+<li
+    {% if 'my-designs' in request.path %}
+      class="active"
+    {% else %}
+      class=""
+    {% endif %}
+><a href="{% url 'my_designs' %}">My Designs</a></li>
+
+<!-- Account Link -->
+<li
+    {% if 'account' in request.path %}
+      class="active"
+    {% else %}
+      class=""
+    {% endif %}
+><a href="{% url 'account' %}">Account</a></li>
+
+
+<!-- My Designs Link -->
+<li>
+  <a href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+  <form action="{% url 'logout' %}" method="POST" id="logout">{% csrf_token %}</form>
+</li>

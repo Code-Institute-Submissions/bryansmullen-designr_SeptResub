@@ -1,0 +1,18 @@
+<!-- Register Link -->
+<li
+  {% if 'register' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'register' %}">Register</a></li>
+
+<!-- Login Link -->
+<li
+  {% if 'login' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'login' %}">Login</a></li>
+

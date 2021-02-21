@@ -1,13 +1,21 @@
- <nav>
-    <div class="nav-wrapper red darken-3">
-      <a href="{% url 'index' %}" class="brand-logo logo-text">Designr</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-      <ul class="right hide-on-med-and-down">
-        {% include 'partials/_links.html' %}
-      </ul>
-    </div>
-  </nav>
+<nav>
+  <div class="nav-wrapper red darken-3">
+    <a href="{% url 'index' %}" class="brand-logo logo-text">Designr</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+    <ul class="right hide-on-med-and-down">
+      {% if user.is_authenticated %}
+        {% include 'partials/_authlinks.html' %}
+      {% else %}
+        {% include 'partials/_guestlinks.html' %}
+      {% endif %}
+    </ul>
+  </div>
+</nav>
 
-  <ul class="sidenav" id="mobile-demo">
-        {% include 'partials/_links.html' %}
-  </ul>
+<ul class="sidenav" id="mobile-demo">
+  {% if user.is_authenticated %}
+    {% include 'partials/_authlinks.html' %}
+  {% else %}
+    {% include 'partials/_guestlinks.html' %}
+  {% endif %}
+</ul>

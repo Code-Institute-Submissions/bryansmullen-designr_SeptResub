@@ -20,7 +20,8 @@ def register(request):
                 messages.error(request, 'User already exists')
                 return redirect('register')
             else:
-                user = User.objects.create_user(email=email, username=username, first_name=first_name, last_name=last_name, password=password)
+                user = User.objects.create_user(email=email, username=username, first_name=first_name,
+                                                last_name=last_name, password=password)
                 print(user)
                 # login user
                 auth.login(request, user)
@@ -34,13 +35,26 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        messages.error(request, 'POST login')
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('account')
+        else:
+            messages.error(request, 'Incorrect login details')
+            return redirect('login')
         return redirect('login')
     else:
         return render(request, 'users/login.html')
 
 
 def logout(request):
+    if request.method == "POST":
+        auth.logout(request)
+        return redirect('index')
     return redirect('index')
 
 
