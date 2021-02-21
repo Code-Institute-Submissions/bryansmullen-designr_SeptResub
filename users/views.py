@@ -59,4 +59,8 @@ def logout(request):
 
 
 def account(request):
-    return render(request, 'users/account.html')
+    current_user = request.user
+    context = {
+        'current_user': current_user
+    }
+    return render(request, 'users/account.html', context)
