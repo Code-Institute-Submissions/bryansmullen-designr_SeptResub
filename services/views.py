@@ -1,9 +1,11 @@
 from django.shortcuts import render
 
+from .models import Service
+
 
 def services(request):
-    return render(request, 'services/services.html')
-
-
-def service(request, service_id):
-    return render(request, 'services/service.html')
+    services = Service.objects.all()
+    context = {
+        'services': services
+    }
+    return render(request, 'services/services.html', context)
