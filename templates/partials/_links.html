@@ -10,9 +10,27 @@
 
 <!-- About Link -->
 <li
-  {% if '/about' == request.path %}
+  {% if 'about' in request.path %}
     class="active"
   {% else %}
     class=""
   {% endif %}
 ><a href="{% url 'about' %}">About</a></li>
+
+<!-- Services Link -->
+<li
+  {% if 'services' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'services' %}">Services</a></li>
+
+<!-- About Link -->
+<li
+  {% if 'portfolio' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'portfolio' %}">Portfolio</a></li>
