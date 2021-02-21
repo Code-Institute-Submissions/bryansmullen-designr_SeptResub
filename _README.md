@@ -195,5 +195,6 @@ Design examples:
 - Photo by Kaboompics .com from Pexels
 - Photo by Ann H from Pexels
 - Photo by eric anada from Pexels
+- Photo by alleksana from Pexels
 
 [comment]: <> (- I received inspiration for this project from X)

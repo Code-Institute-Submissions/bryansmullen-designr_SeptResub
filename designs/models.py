@@ -1,10 +1,11 @@
 from datetime import datetime
+from django.contrib.auth.models import User
 
 from django.db import models
 
 class Design(models.Model):
     name = models.CharField(max_length=50)
-    # owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=50)
     date = models.DateField(default=datetime.now)
     complete = models.BooleanField()

@@ -1,3 +1,12 @@
+<!-- Portfolio Link -->
+<li
+    {% if 'portfolio' in request.path %}
+      class="active"
+    {% else %}
+      class=""
+    {% endif %}
+><a href="{% url 'portfolio' %}">Portfolio</a></li>
+
 <!-- Register Link -->
 <li
   {% if 'register' in request.path %}
