@@ -112,7 +112,6 @@ hr {
 }
 
 
-
 .chat-av {
 
     color: white;
@@ -129,4 +128,9 @@ hr {
 
 .alert {
     color: white;
+}
+
+.card-image {
+    height: 300px;
+    overflow: hidden
 }

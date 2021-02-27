@@ -17,12 +17,54 @@
     </div>
 
     {% if cart_items %}
+      <div class="card">
+
+        <table>
+          <thead>
+          <tr>
+            <th>Service Id</th>
+            <th>Service Name</th>
+            <th>Quantity</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          {% for item in cart_items %}
+            <tr>
+              <td>{{ item.id }}</td>
+              <td>{{ item.service }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>
+                <form method="post" action="{% url 'remove_from_cart' item.id %}">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{ item.id }}"/>
+                  <input type="submit" value="remove">
+                  <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
+
+                </form>
+              </td>
+
+            </tr>
+          {% endfor %}
+          <tr>
+            <th></th>
+            <th>Total</th>
+            <th>t</th>
+
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
     {% else %}
       <div class="card row">
 
         <div class="card-content col s12 m6">
-        <span class="card-title">There are no items in your cart.</span>
-          <a href="{% url 'services' %}"><button class="btn red darken-3">View services</button></a>
+          <span class="card-title">There are no items in your cart.</span>
+          <a href="{% url 'services' %}">
+            <button class="btn red darken-3">View services</button>
+          </a>
 
         </div>
       </div>

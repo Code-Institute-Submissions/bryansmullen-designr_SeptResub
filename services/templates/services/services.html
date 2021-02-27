@@ -18,28 +18,31 @@
 
     {% if services %}
       {% for service in services %}
-        <div class="card row">
-          <div class="card-image col s12 m6">
-            <img src="{% static service.image %}">
-          </div>
-          <div class="card-content col s12 m6">
-            <span class="card-title">{{ service.name }} | <small>&euro;{{ service.price }}</small></span>
-            <p>{{ service.description }}</p>
-          </div>
-          <div class="row">
+        <form action="{% url 'add_to_cart' service.id %}" method="POST">
+        {% csrf_token %}
 
-          <div class="card-action">
-            <button class="btn red darken-3">Add to Cart</button>
+          <div class="card row">
+            <div class="card-image col s12 m6" >
+              <img src="{{ service.image.url }}">
+            </div>
+            <div class="card-content col s12 m6">
+              <span class="card-title">{{ service.name }} | <small>&euro;{{ service.price }}</small></span>
+              <p>{{ service.description }}</p>
+            </div>
+            <div class="row">
+
+              <div class="card-action">
+                <button class="btn red darken-3 modal-trigger" href="#modal1">Add to Cart</button>
+              </div>
+            </div>
           </div>
-          </div>
-        </div>
+        <input type="hidden" name="quantity" value="1" data-item_id="{{ service.id }}" id="id_qty_{{ service.id }}"/>
+        <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
+        </form>
       {% endfor %}
 
     {% else %}
       <div class="card row">
-        <div class="card-image col s12 m6">
-          <img src="{% static 'img/eg1.jpg' %}">
-        </div>
         <div class="card-content col s12 m6">
         <span class="card-title">No Services Available
         </span>
