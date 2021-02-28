@@ -30,9 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
-# TODO: SET TO FALSE BEFORE DEPLOY
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['bryansmullen-designr.herokuapp.com','localhost']
 
@@ -92,7 +91,7 @@ WSGI_APPLICATION = 'ms4.wsgi.application'
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(
-            'postgres://biihrdbcwvggbz:ffb05c6ea17f286f9af68bb0560843021a1183dc193057fbb15fe887862fcb2f@ec2-34-254-69-72.eu-west-1.compute.amazonaws.com:5432/d3i76kfbjl7j45')
+            env('DATABASE_URL'))
     }
 else:
     DATABASES = {
