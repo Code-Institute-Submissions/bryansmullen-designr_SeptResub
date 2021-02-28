@@ -26,14 +26,7 @@
     {% endif %}
 ><a href="{% url 'services' %}">Services</a></li>
 
-<!-- My Designs Link -->
-<li
-    {% if 'my-designs' in request.path %}
-      class="active"
-    {% else %}
-      class=""
-    {% endif %}
-><a href="{% url 'my_designs' %}">My Designs</a></li>
+
 
 <!-- Cart Link -->
 <li

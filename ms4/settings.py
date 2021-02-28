@@ -33,7 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['bryansmullen-designr.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['bryansmullen-designr.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'checkout.apps.CheckoutConfig',
     'cart.apps.CartConfig',
     'users.apps.UsersConfig',
-    'designs.apps.DesignsConfig',
     'portfolio.apps.PortfolioConfig',
     'services.apps.ServicesConfig',
     'pages.apps.PagesConfig',
@@ -97,18 +96,15 @@ if 'DATABASE_URL' in os.environ:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env('DATABASE_NAME'),
-            'USER': env('DATABASE_USER'),
-            'PASSWORD': env('DATABASE_PASSWORD'),
-            'HOST': env('DATABASE_HOST'),
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+    # Password validation
+    # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
+    AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -139,7 +135,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-
 STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -149,6 +144,9 @@ STATICFILES_DIRS = [
 # media files
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+AWS_S3_ADDRESSING_STYLE = "path"
+S3_USE_SIGV4 = True
+AWS_S3_SIGNATURE_VERSION = "s3v4"
 
 if 'USE_AWS' in os.environ:
     AWS_S3_OBJECT_PARAMETERS = {
@@ -167,8 +165,8 @@ if 'USE_AWS' in os.environ:
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
 
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 # vat rate
 VAT_RATE_PERCENTAGE = 0.23
@@ -179,7 +177,7 @@ MESSAGE_TAGS = {
 }
 
 # stripe
-STRIPE_CURRENCY = 'usd',
+STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_WEBHOOK_SECRET = env('STRIPE_WH_SECRET')

@@ -13,6 +13,8 @@ def register(request):
         password = request.POST['password']
         password2 = request.POST['password2']
 
+        print(username, first_name, last_name, email, password, password2)
+
         # check passwords match
         if password == password2:
             # check user model
@@ -20,6 +22,7 @@ def register(request):
                 messages.error(request, 'User already exists')
                 return redirect('register')
             else:
+                print('2')
                 user = User.objects.create_user(email=email, username=username, first_name=first_name,
                                                 last_name=last_name, password=password)
                 print(user)
@@ -30,7 +33,10 @@ def register(request):
             messages.error(request, 'Passwords do not match')
             return redirect('register')
     else:
-        return render(request, 'users/register.html')
+        if request.user.is_authenticated:
+            return redirect('account')
+        else:
+            return render(request, 'users/register.html')
 
 
 def login(request):
@@ -48,7 +54,10 @@ def login(request):
             return redirect('login')
         return redirect('login')
     else:
-        return render(request, 'users/login.html')
+        if request.user.is_authenticated:
+            return redirect('account')
+        else:
+            return render(request, 'users/login.html')
 
 
 def logout(request):
