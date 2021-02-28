@@ -14,187 +14,141 @@ In particular, the following user stories will be achieved:
 - As a user, I want to see the designers previous work, based on the type of work I am looking for. For example: poster,
   logo, business card, etc.
 - As a user, I want to be able to purchase individual graphic design services from the designer
-- As a user, I want to be able to see my finished designs in a private user area
-- As a user, I want to be able to request changes to the artwork, so long as I have sufficient edits allowed
 - As a user, I want to be able to pay for my order on the website using a secure method
 - As a designer, I want to be able to showcase my public work to the world to generate new business
 - As a designer, I want to be able to accept new commissions from users
 - As a designer, I want to be able to accept payment for commissions up front
-- As a designer, I want to be able to limit the number of edits a user can make before the artwork is considered
-  finished
-- As a designer, I want to be able to charge a premium rate if the user does not want the artwork displayed in the
-  public portfolio
 
-- Account
-open orders
-closed orders
+## Features
 
-## Data Types
+- Portfolio - An publicly accessible area where the designer can post their work for the world to see
+- Registration - An area for users to register so they can make private orders from the designer
+- Services - An area where services the designer is advertising can be added to a cart for purchase
+- Cart/Checkout - A secure shopping cart & checkout for the user to pay for services
+- Admin - An admin area for the designer to receive and keep track of orders and payments
 
-The following data types will be used in the project, and an SQL table will be generated for each:
+### Existing Features
 
-- User - Individual users
-    - Id [str] (unique, PK)
-    - Name [str]
-    - Email [str] (unique, used for authentication)
-    - Password [str] (hashed)
-- Services - Services offered by the designer for purchase
-    - Id [str] (unique, PK)
-    - Category [str]
-    - Name [str] (unique)
-    - Description [str]
-    - Price [int]
-    - Public [bool]
-- Designs - Completed tangible pieces of artwork
-    - Id [str] (unique, PK)
-    - Category [str]
-    - Date [date]
-    - Complete [bool]
-    - Brief [text]
-    - Image [str] (unique, url to jpg/png)
-    - Owner [str] (FK)
-    - EditsRemaining [int] (default 1)
-- Messages - Edit requests relating to a particular piece of artwork
-    - Id [str] (unique, PK)
-    - Owner [str] (FK)
-    - Artwork [str] (FK)
-    - Message [text]
-    
-## Permissions
+- The portfolio area allows users to see the designers previous work
+- The services area allows users to purchase design services from the designer by choosing the items and adding to cart
+- The cart/checkout area allows the user to purchase items using the secure checkout by filling out their card details
+- The portfolio allows the designer to showcase their work by uploading items in the admin area
+- The admin area allows the designer to receive the new commissions by logging in and checking for new items. They can
+  then communicate with the users via email
+- The cart/checkout feature allows the designer to accept payment up front
 
-- User
-    - Create - All
-    - Read - Admin/self
-    - Update - self * implement password recovery
-    - Delete - self
-- Services
-    - Create - Admin
-    - Read - Admin
-    - Update - Admin
-    - Delete - Admin
-- Designs
-    - Create - Admin
-    - Read - Admin/Owner
-    - Update - Admin/Owner (limited to edit requests)
-    - Delete - Admin
-- Messages
-    - Create - Admin/Authenticated User
-    - Read - Admin/Authenticated User
-    - Update - Owner
-    - Delete - Owner
-  
-## Testing
-- Urls
-- View
-- Models
-- Helper Files
+### Features left to implement
 
-[comment]: <> (## Features)
-
-[comment]: <> (In this section, you should go over the different parts of your project, and describe each in a sentence or so.)
-
-[comment]: <> (### Existing Features)
-
-[comment]: <> (- Feature 1 - allows users X to achieve Y, by having them fill out Z)
-
-[comment]: <> (- ...)
-
-[comment]: <> (For some/all of your features, you may choose to reference the specific project files that implement them, although this)
-
-[comment]: <> (is entirely optional.)
-
-[comment]: <> (In addition, you may also use this section to discuss plans for additional features to be implemented in the future:)
-
-[comment]: <> (### Features Left to Implement)
-
-[comment]: <> (- Another feature idea)
+- A messaging area to allow users and designers to communicate without the need for external email
+- A My Designs area for users to view their previously commissioned works
 
 [comment]: <> (## Technologies Used)
 
-[comment]: <> (In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - Markup Language
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Stylesheets
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) - Front End Scripting
+- [Materialize](https://materializecss.com/) - Front End Library
+- [Python](https://docs.python.org/3/) - Back End Scripting
+- [Django](https://docs.djangoproject.com/en/3.1/) - Back End Framework
+- [Stripe](https://stripe.com/docs) - Secure Payments API
+- [AWS](https://docs.aws.amazon.com/index.html) - Static File Hosting
+- [Heroku](https://devcenter.heroku.com/categories/reference) - Application Hosting
 
-[comment]: <> (to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was)
 
-[comment]: <> (used.)
+- In the absence of a specific, detailed and comprehensive module on automated testing provided by the course, manual testing has been opted for. It is assumed that this will not be penalised.
+- The deployed, live version of the site was utilised for the tests.
 
-[comment]: <> (- [JQuery]&#40;https://jquery.com&#41;)
+### Tests Conducted
 
-[comment]: <> (    - The project uses **JQuery** to simplify DOM manipulation.)
+#### Finished Project Tests
 
-[comment]: <> (## Testing)
+The function of these tests is to ensure that the finished project renders acceptably on all intended devices. Four sets of tests were completed:
 
-[comment]: <> (In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that)
+- Validation
+- Modelled Device Testing
+- Automated Cross Browser Testing
+- Manual Browser Testing
 
-[comment]: <> (the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and)
+#### Validation
 
-[comment]: <> (ensure that they all work as intended, with the project providing an easy and straightforward way for the users to)
+Validation took place on HTML, CSS, JS, and Python files in the project. 
 
-[comment]: <> (achieve their goals.)
+#### Modelled Device Testing
 
-[comment]: <> (Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your)
+To test the layout on multiple devices, Google Chrome DevTools is used to simulate the size of multiple devices and screen ratios. Screen responsiveness has been noted to ensure the correct screen ratio was delivered, links are tested by clicking through, images are checked to ensure they displayed correctly on all devices, and the website as a whole is checked to ensure everything renders as expected. 
 
-[comment]: <> (approach, link to the test file&#40;s&#41; and explain how to run them.)
+The following device dimensions are tested:
 
-[comment]: <> (For any scenarios that have not been automated, test the user stories manually and provide as much detail as is)
+- Moto G4
+- Galaxy S5
+- Pixel 2
+- Pixel 2 XL
+- iPhone 5/SE
+- iPhone 6,7,8
+- iPhone 6,7,8 Plus
+- iPhone X
+- iPad
+- iPad Pro
+- Surface Duo
+- Galaxy Fold
+- Desktop
 
-[comment]: <> (relevant. A particularly useful form for describing your testing process is via scenarios, such as:)
 
-[comment]: <> (1. Contact form:)
+#### Automated Cross Browser Testing
 
-[comment]: <> (    1. Go to the "Contact Us" page)
+To test the layout on multiple browsers, [browserstack](https://www.browserstack.com) is used to emulate different browsers running on virtual machines. The following browsers are tested:
 
-[comment]: <> (    2. Try to submit the empty form and verify that an error message about the required fields appears)
+- Catalina 13.1
+- Firefox 82
+- Chrome 64
+- Opera 48
+- Yandex 14.12
 
-[comment]: <> (    3. Try to submit the form with an invalid email address and verify that a relevant error message appears)
+#### Manual Cross Browser Testing
 
-[comment]: <> (    4. Try to submit the form with all inputs valid and verify that a success message appears.)
+To complement the above results the website is also tested manually on up-to-date browsers available on the developer's machine. 
 
-[comment]: <> (In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.)
+The following browsers are tested:
 
-[comment]: <> (You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you)
+- Edge
+- Brave
+- Chrome
 
-[comment]: <> (haven't addressed them yet.)
+---
 
-[comment]: <> (If this section grows too long, you may want to split it off into a separate file and link to it from here.)
+## Deployment
 
-[comment]: <> (## Deployment)
+This project is deployed on Heroku, which can be accessed at [Designr](https://github.com/bryansmullen/designr) or [Designr Deployed Version](https://bryansmullen-designr.herokuapp.com/). The deployment is linked to the Master Branch of the repo, and will automatically update the deployment when any changes are committed to this branch of the remote repository. The deployment procedure is documented below.
+- Project was initialized as a git repository
+- A remote repository was linked to the project using github
+- Code was commited to git and pushed to github taking care to ignore sensitive files, for example .env, as well as venv folders and notes files
+- It was ensured that both an up-to-date requirements.txt file was maintained, and a Procfile to configure heroku also existed
+- A remote repository was created for the project using heroku
+- Environment variables from the local environment were added to heroku's config variables
+- Heroku was configured to automatically deploy from the github master branch
 
-[comment]: <> (This section should describe the process you went through to deploy the project to a hosting platform &#40;e.g. GitHub Pages)
+[BACK TO CONTENTS](#Contents)
 
-[comment]: <> (or Heroku&#41;.)
+## Cloning a Local Version
 
-[comment]: <> (In particular, you should provide all details of the differences between the deployed version and the development)
+The procedure for cloning a local version on a windows machine is detailed below. Instructions for Mac/Linux will be considered at a later date.
 
-[comment]: <> (version, if any, including:)
+- Ensure Git, Python, Pip, and PyCharm are installed on your machine
+- Clone the [github repository](https://github.com/bryansmullen/designr) using `git clone https://github.com/bryansmullen/designr.git`
+- Within the created folder, create and activate a virtual environment
+- Install the project requirements within the virtual environment the requirements.txt file
+- Inside the ms4 directory, rename sampleenvfile to .env and add values for each env variable
+- In your terminal, navigated to the project directory, run `python manage.py runserver`
 
-[comment]: <> (- Different values for environment variables &#40;Heroku Config Vars&#41;?)
-
-[comment]: <> (- Different configuration files?)
-
-[comment]: <> (- Separate git branch?)
-
-[comment]: <> (In addition, if it is not obvious, you should also describe how to run your code locally.)
-
-[comment]: <> (## Credits)
-
-[comment]: <> (### Content)
-
-[comment]: <> (- The text for section Y was copied from the [Wikipedia article Z]&#40;https://en.wikipedia.org/wiki/Z&#41;)
-
-[comment]: <> (### Media)
-
-[comment]: <> (- The photos used in this site were obtained from ...)
-
-### Acknowledgements
+# Acknowledgements
 
 Home BG Photo by Max Vakhtbovych from Pexels
 
-Design examples: 
+Design examples:
+
 - Photo by Magda Ehlers from Pexels
 - Photo by Sy Donny from Pexels
 - Photo by Kaboompics .com from Pexels
 - Photo by Ann H from Pexels
 - Photo by eric anada from Pexels
 - Photo by alleksana from Pexels
-
-[comment]: <> (- I received inspiration for this project from X)
