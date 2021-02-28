@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="background"></div>
+  <div class="overlay"></div>
+
+  <main class="container ">
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="text-center">Thank You</h3>
+          </div>
+          <p>Your order information is below. You will hear from us soon.</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+
+        <div class="row">
+          <div class="col">
+            <div class="order-confirmation-wrapper">
+              <div class="row">
+                <div class="col">
+                  <small>Order Info</small>
+                  <p>Order Number: {{ order.order_number }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="order-confirmation-wrapper">
+              <div class="row">
+                <div class="col">
+                  <small>Order Date</small>
+                  <p>Order Number: {{ order.date }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="order-confirmation-wrapper">
+              <div class="row">
+                <div class="col">
+                  <small>Order Details</small>
+
+                  {% for item in order.lineitems.all %}
+                    <p>
+                      {{ item.service.name }} - &euro;{{ item.service.price }}
+                    </p>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="order-confirmation-wrapper">
+              <div class="row">
+                <div class="col">
+                  <small>Billing Info</small>
+                  <p>Full Name: {{ order.full_name }}</p>
+
+                  <p>Street Address: {{ order.street_address1 }}
+                    {% if order.street_address2 %}{{ order.street_address2 }} {% endif %}</p>
+
+                  {% if order.county %}
+                    <p>County: {{ order.county }}</p>
+                  {% endif %}
+                
+                  <p>Town or City: {{ order.town_or_city }}</p>
+
+                  <p>Country: {{ order.country }}</p>
+
+                  {% if order.post_code %}
+                    <p>Post Code: {{ order.post_code }}</p>
+                  {% endif %}
+                  <p>Phone Number: {{ order.phone_number }}</p>
+
+                  <p>Total: {{ order.grand_total }} plus VAT</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}

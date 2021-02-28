@@ -13,12 +13,49 @@
             <h3 class="text-center">Checkout</h3>
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-content">
+            <form action=" {% url 'checkout' %}" method="post" id="payment-form">
+              {% csrf_token %}
+              <fieldset>
+                <legend>Personal</legend>
+                {{ order_form.full_name }}
+                {{ order_form.email }}
+                {{ order_form.phone_number }}
+              </fieldset>
+              <fieldset>
+                <legend>Address</legend>
+                {{ order_form.country }}
+                {{ order_form.postcode }}
+                {{ order_form.town_or_city }}
+                {{ order_form.street_address1 }}
+                {{ order_form.street_address2 }}
+                {{ order_form.county }}
+              </fieldset>
+              <fieldset>
+                <legend>Payment</legend>
+                <!-- THESE FIELDS WILL BE POPULATED BY STRIPE -->
+                <div id="card-element"></div>
+                <div id="card-errors"></div>
+              </fieldset>
+              <button class="btn grey darken-3">Back To Cart</button>
+              <button id='submit-button' class="btn red darken-3">Complete Order</button>
+              <small>Your card will be charged &euro;{{ total }}</small>
+            </form>
+
+          </div>
+        </div>
+
       </div>
     </div>
-
-
-
-
   </main>
 
 {% endblock content %}
+
+{% block postloadjs %}
+  {{ block.super }}
+  {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+  {{ client_secret|json_script:"id_client_secret" }}
+  <script src="{% static 'js/stripeElements.js' %}"></script>
+{% endblock postloadjs %}

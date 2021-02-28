@@ -49,10 +49,21 @@
             </tr>
           {% endfor %}
           <tr>
+            <td></td>
+            <td>Subtotal</td>
+            <td>&euro;{{ subtotal }}</td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>Vat</td>
+            <td>&euro;{{ vat }}</td>
+          </tr>
+
+          <tr>
             <th></th>
             <th>Total</th>
-            <th>t</th>
-
+            <th>&euro;{{ total }}</th>
           </tr>
 
           </tbody>
@@ -70,6 +81,10 @@
         </div>
       </div>
     {% endif %}
+
+  <a class="row">
+    <a href="{% url 'checkout' %}"><button type="submit" class="btn red darken-3">Go To Checkout</button></a>
+  </div>
 
 
   </main>

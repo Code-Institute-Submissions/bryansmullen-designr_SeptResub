@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from django.contrib.messages import constants as messages
+
 # import env variables
 import environ
+from django.contrib.messages import constants as messages
 
 env = environ.Env()
 environ.Env.read_env()
@@ -26,7 +27,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-
 
 # TODO: SET TO FALSE BEFORE DEPLOY
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -145,16 +145,20 @@ STATICFILES_DIRS = [
     BASE_DIR / 'ms4/static'
 ]
 
-
 # media files
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
-
 # vat rate
-VAT_RATE_PERCENTAGE = 23
+VAT_RATE_PERCENTAGE = 0.23
 
 #  messages
 MESSAGE_TAGS = {
     messages.ERROR: 'red',
 }
+
+# stripe
+STRIPE_CURRENCY = 'usd',
+STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+STRIPE_WEBHOOK_SECRET = env('STRIPE_WH_SECRET')

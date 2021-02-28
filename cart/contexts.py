@@ -12,6 +12,9 @@ def cart_contents(request):
 
     for id, quantity in cart.items():
         service = get_object_or_404(Service, pk=id)
+        subtotal += quantity * service.price
+        vat = subtotal * settings.VAT_RATE_PERCENTAGE
+        total = subtotal + vat
         cart_items.append({
             'id': id,
             'quantity': quantity,
@@ -21,7 +24,6 @@ def cart_contents(request):
     context = {
         'cart_items': cart_items,
         'subtotal': subtotal,
-        'product_count': product_count,
         'vat': vat,
         'total': total
     }

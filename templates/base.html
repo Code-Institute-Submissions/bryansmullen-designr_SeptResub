@@ -22,11 +22,13 @@
 {% include 'partials/_footer.html' %}
 
 <!-- Matierialize JS import -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <!-- Font Awesome import -->
 <script src="https://kit.fontawesome.com/3ebd44cf5a.js" crossorigin="anonymous"></script>
 <script src="{% static 'js/yearInject.js' %}"></script>
 <script src="{% static 'js/initSidenav.js' %}" defer></script>
+<script src="https://js.stripe.com/v3/"></script>
+{% block postloadjs %}{% endblock %}
 
 </body>
 </html>
