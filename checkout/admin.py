@@ -8,7 +8,6 @@ class OrderLineItemAdminInline(admin.TabularInline):
     readonly_fields = ('lineitem_total',)
 
 
-# Register your models here.
 class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('order_number', 'date', 'order_total', 'grand_total')
 
