@@ -54,7 +54,6 @@ In particular, the following user stories will be achieved:
 - [AWS](https://docs.aws.amazon.com/index.html) - Static File Hosting
 - [Heroku](https://devcenter.heroku.com/categories/reference) - Application Hosting
 
-
 - In the absence of a specific, detailed and comprehensive module on automated testing provided by the course, manual testing has been opted for. It is assumed that this will not be penalised.
 - The deployed, live version of the site was utilised for the tests.
 
@@ -71,11 +70,11 @@ The function of these tests is to ensure that the finished project renders accep
 
 #### Validation
 
-Validation took place on HTML, CSS, JS, and Python files in the project. 
+Validation took place on HTML, CSS, JS, and Python files in the project.
 
 #### Modelled Device Testing
 
-To test the layout on multiple devices, Google Chrome DevTools is used to simulate the size of multiple devices and screen ratios. Screen responsiveness has been noted to ensure the correct screen ratio was delivered, links are tested by clicking through, images are checked to ensure they displayed correctly on all devices, and the website as a whole is checked to ensure everything renders as expected. 
+To test the layout on multiple devices, Google Chrome DevTools is used to simulate the size of multiple devices and screen ratios. Screen responsiveness has been noted to ensure the correct screen ratio was delivered, links are tested by clicking through, images are checked to ensure they displayed correctly on all devices, and the website as a whole is checked to ensure everything renders as expected.
 
 The following device dimensions are tested:
 
@@ -93,7 +92,6 @@ The following device dimensions are tested:
 - Galaxy Fold
 - Desktop
 
-
 #### Automated Cross Browser Testing
 
 To test the layout on multiple browsers, [browserstack](https://www.browserstack.com) is used to emulate different browsers running on virtual machines. The following browsers are tested:
@@ -106,7 +104,7 @@ To test the layout on multiple browsers, [browserstack](https://www.browserstack
 
 #### Manual Cross Browser Testing
 
-To complement the above results the website is also tested manually on up-to-date browsers available on the developer's machine. 
+To complement the above results the website is also tested manually on up-to-date browsers available on the developer's machine.
 
 The following browsers are tested:
 
@@ -119,6 +117,7 @@ The following browsers are tested:
 ## Deployment
 
 This project is deployed on Heroku, which can be accessed at [Designr](https://github.com/bryansmullen/designr) or [Designr Deployed Version](https://bryansmullen-designr.herokuapp.com/). The deployment is linked to the Master Branch of the repo, and will automatically update the deployment when any changes are committed to this branch of the remote repository. The deployment procedure is documented below.
+
 - Project was initialized as a git repository
 - A remote repository was linked to the project using github
 - Code was commited to git and pushed to github taking care to ignore sensitive files, for example .env, as well as venv folders and notes files
@@ -137,7 +136,7 @@ The procedure for cloning a local version on a windows machine is detailed below
 - Clone the [github repository](https://github.com/bryansmullen/designr) using `git clone https://github.com/bryansmullen/designr.git`
 - Within the created folder, create and activate a virtual environment
 - Install the project requirements within the virtual environment the requirements.txt file
-- Inside the ms4 directory, rename sampleenvfile to .env and add values for each env variable
+- Inside the main directory, rename sampleenvfile to .env and add values for each env variable
 - In your terminal, navigated to the project directory, run `python manage.py runserver`
 
 # Acknowledgements
