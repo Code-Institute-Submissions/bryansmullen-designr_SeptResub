@@ -23,8 +23,10 @@ def register(request):
                 return redirect('register')
             else:
                 print('2')
-                user = User.objects.create_user(email=email, username=username, first_name=first_name,
-                                                last_name=last_name, password=password)
+                user = User.objects.create_user(email=email, username=username,
+                                                first_name=first_name,
+                                                last_name=last_name,
+                                                password=password)
                 print(user)
                 # login user
                 auth.login(request, user)

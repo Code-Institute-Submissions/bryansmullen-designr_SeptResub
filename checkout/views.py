@@ -44,7 +44,8 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('cart'))
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
     else:
         cart = request.session.get('cart', {})
         if not cart:
@@ -74,7 +75,6 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
-    save_info = request.session.get('save-info')
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, 'success')
 

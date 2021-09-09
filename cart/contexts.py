@@ -2,10 +2,10 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from services.models import Service
 
+
 def cart_contents(request):
     cart_items = []
     subtotal = 0
-    product_count = 0
     vat = subtotal * settings.VAT_RATE_PERCENTAGE
     total = subtotal + vat
     cart = request.session.get('cart', {})

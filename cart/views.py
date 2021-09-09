@@ -7,7 +7,6 @@ def cart(request):
 
 def add_to_cart(request, item_id):
     quantity = int(request.POST['quantity'])
-    redirect_url = request.POST['redirect_url']
     my_cart = request.session.get('cart', {})
 
     if item_id in list(my_cart.keys()):
