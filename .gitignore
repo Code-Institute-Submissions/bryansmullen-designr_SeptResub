@@ -1,5 +1,5 @@
 /db.sqlite3
 /notes.md
 /.idea
-/static/
 /ms4/.env
+__pycache__
