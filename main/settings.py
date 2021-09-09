@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'portfolio.apps.PortfolioConfig',
     'services.apps.ServicesConfig',
-    'pages.apps.PagesConfig',
+    'home.apps.homeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
