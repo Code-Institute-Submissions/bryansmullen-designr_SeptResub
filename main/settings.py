@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['bryansmullen-designr.herokuapp.com',
 INSTALLED_APPS = [
     'checkout.apps.CheckoutConfig',
     'cart.apps.CartConfig',
-    'users.apps.UsersConfig',
     'portfolio.apps.PortfolioConfig',
     'services.apps.ServicesConfig',
     'home.apps.HomeConfig',
@@ -114,20 +113,20 @@ else:
 
     AUTH_PASSWORD_VALIDATORS = [
         {
-            'NAME': 'django.contrib.auth.password_validation\
-                .UserAttributeSimilarityValidator',
+            'NAME': 'django.contrib.auth.password_validation' +
+            '.UserAttributeSimilarityValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation\
-                .MinimumLengthValidator',
+            'NAME': 'django.contrib.auth.password_validation' + 
+            '.MinimumLengthValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation\
-                .CommonPasswordValidator',
+            'NAME': 'django.contrib.auth.password_validation' + 
+            '.CommonPasswordValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation\
-                .NumericPasswordValidator',
+            'NAME': 'django.contrib.auth.password_validation' + 
+            '.NumericPasswordValidator',
         },
     ]
 
