@@ -28,11 +28,10 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
+        vat_rate = settings.VAT_RATE_PERCENTAGE
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
-        print(self.order_total)
-        print(settings.VAT_RATE_PERCENTAGE)
-        self.grand_total = self.order_total
+        self.grand_total = self.order_total + self.order_total * vat_rate
         self.save()
 
     def save(self, *args, **kwargs):

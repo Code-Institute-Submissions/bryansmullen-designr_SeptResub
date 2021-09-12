@@ -1,6 +1,7 @@
 const stripePublicKey = document.getElementById('id_stripe_public_key').innerText.slice(1, -1);
 const stripeSecretKey = document.getElementById('id_client_secret').innerText.slice(1, -1);
 const stripe = Stripe(stripePublicKey);
+console.log('stripePublicKey')
 const elements = stripe.elements();
 const card = elements.create('card');
 

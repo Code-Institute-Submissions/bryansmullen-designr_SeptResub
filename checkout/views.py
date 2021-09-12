@@ -11,12 +11,16 @@ from .models import OrderLineItem, Order
 
 # Create your views here.
 def checkout(request):
+
+    # define stripe public & secret keys
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
+        # get cart from session
         cart = request.session.get('cart', {})
 
+        # get data submitted in form
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -28,6 +32,8 @@ def checkout(request):
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
+
+        # create order_form object
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
@@ -47,14 +53,21 @@ def checkout(request):
             return redirect(reverse('checkout_success',
                                     args=[order.order_number]))
     else:
+        # Handle GET requests
+
+        # Verify existance of cart
         cart = request.session.get('cart', {})
         if not cart:
             return redirect(reverse('services'))
 
+        # Get cart contents from context processor
         current_cart = cart_contents(request)
 
+        # define and round total
         total = current_cart['total']
         stripe_total = round(total * 100)
+
+        # create stripe intent
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
@@ -62,8 +75,10 @@ def checkout(request):
             payment_method_types=['card'],
         )
 
+        # generate order form
         order_form = OrderForm()
 
+        # render page
         template = 'checkout/checkout.html'
         context = {
             'order_form': order_form,
