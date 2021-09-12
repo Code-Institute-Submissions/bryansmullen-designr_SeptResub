@@ -7,3 +7,7 @@ def index(request):
 
 def about(request):
     return render(request, 'home/about.html')
+
+
+def account(request):
+    return render(request, 'home/account.html')
