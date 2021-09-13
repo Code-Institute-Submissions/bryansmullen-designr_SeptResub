@@ -1,0 +1,13 @@
+select, select option{
+    color: black;
+    display: block;
+}
+
+select:invalid,
+select option[value=""] {
+    color: gray !important
+}
+
+#payment-form select {
+    display: block;
+}

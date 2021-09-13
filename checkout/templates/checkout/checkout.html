@@ -26,12 +26,12 @@
               </fieldset>
               <fieldset>
                 <legend>Address</legend>
-                {{ order_form.country }}
-                {{ order_form.postcode }}
-                {{ order_form.town_or_city }}
                 {{ order_form.street_address1 }}
                 {{ order_form.street_address2 }}
+                {{ order_form.town_or_city }}
                 {{ order_form.county }}
+                {{ order_form.country }}
+                {{ order_form.postcode }}
               </fieldset>
               <fieldset>
                 <legend>Payment</legend>
@@ -58,5 +58,8 @@
   {{ stripe_public_key|json_script:"id_stripe_public_key" }}
   {{ client_secret|json_script:"id_client_secret" }}
   <script src="{% static 'js/stripeElements.js' %}"></script>
-  
+  <script>
+    const div = document.getElementById('id_country')
+    div.style.display = "block"
+  </script>
 {% endblock postloadjs %}

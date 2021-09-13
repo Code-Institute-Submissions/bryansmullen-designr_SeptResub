@@ -27,6 +27,7 @@ ALLOWED_HOSTS = ['bryansmullen-designr.herokuapp.com',
 # Application definition
 
 INSTALLED_APPS = [
+    'profiles.apps.ProfilesConfig',
     'checkout.apps.CheckoutConfig',
     'cart.apps.CartConfig',
     'portfolio.apps.PortfolioConfig',
