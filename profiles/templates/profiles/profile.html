@@ -6,17 +6,42 @@
   <div class="overlay"></div>
 
   <main class="container ">
+
     <div class="row">
       <div class="col s12">
         <div class="card">
           <div class="card-content">
             <h3 class="text-center">Profile</h3>
             <p>Default Billing Information</p>
-            <form action="{% url 'profile %" method='POST'>
+            <form action="{% url 'profile' %}" method='POST'>
               {% csrf_token %}
               {{ form }}
               <button type="submit" class='btn red darken-2'>Submit</button>
             </form>
+
+            <div>
+              <table>
+                <thead>
+
+                  <tr>
+                    <th>Order Number</th>
+                    <th>Date</th>
+                    <th>Order Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for order in orders %}
+                    <tr>
+                      <td>
+                        {{ order.order_number|truncatechars:6}}
+                      </td>
+                      <td>{{ order.date }}</td>
+                      <td> {{ order.grand_total }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         

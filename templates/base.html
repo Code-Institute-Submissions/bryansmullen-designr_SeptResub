@@ -39,6 +39,13 @@
 
   <body>
     {% include 'partials/_navbar.html' %} 
+    {% if messages %}
+    <div class="yellow text-center">
+        {% for message in messages %}
+               {{message}}
+        {% endfor %}
+    </div>
+    {% endif %}
     {% block content %} {% endblock content %} 
     
     {% include 'partials/_footer.html' %} 

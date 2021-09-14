@@ -6,7 +6,7 @@ from django.db.models import Sum
 from django_countries.fields import CountryField
 from services.models import Service
 from profiles.models import UserProfile
-
+import decimal
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -39,7 +39,10 @@ class Order(models.Model):
         vat_rate = settings.VAT_RATE_PERCENTAGE
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
-        self.grand_total = self.order_total + self.order_total * vat_rate
+
+        print(type(self.order_total))
+        vat_amount = decimal.Decimal(self.order_total) * decimal.Decimal(vat_rate)
+        self.grand_total = self.order_total + vat_amount
         self.save()
 
     def save(self, *args, **kwargs):
