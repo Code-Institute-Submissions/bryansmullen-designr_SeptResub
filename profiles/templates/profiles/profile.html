@@ -11,18 +11,15 @@
         <div class="card">
           <div class="card-content">
             <h3 class="text-center">Profile</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-lg-6">
             <p>Default Billing Information</p>
             <form action="{% url 'profile %" method='POST'>
               {% csrf_token %}
               {{ form }}
+              <button type="submit" class='btn red darken-2'>Submit</button>
             </form>
           </div>
-          <div class="col-12 col-lg-6"></div>
         </div>
+        
       </div>
     </div>
   </main>
@@ -30,5 +27,6 @@
 {% endblock content %}
 
 {% block postloadjs %}
+<script src="{% static 'js/displayCountry.js' %}"></script>
 
 {% endblock postloadjs %}
