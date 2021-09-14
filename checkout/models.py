@@ -37,7 +37,7 @@ class Order(models.Model):
 
     def update_total(self):
         vat_rate = settings.VAT_RATE_PERCENTAGE
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_gtotal'))[
             'lineitem_total__sum'] or 0
 
         print(type(self.order_total))
