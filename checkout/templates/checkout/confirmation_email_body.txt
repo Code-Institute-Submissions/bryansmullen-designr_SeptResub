@@ -1,0 +1,1 @@
+Hi {{ order.full_name }}, this is to confirm that we have received your payment of {{ order.grand_total }}. We will be in touch shortly to discuss details!

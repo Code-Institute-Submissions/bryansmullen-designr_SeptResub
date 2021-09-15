@@ -1,13 +1,36 @@
 import stripe
 from django.conf import settings
 from django.contrib import messages
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.views.decorators.http import require_POST
 
 from cart.contexts import cart_contents
 from services.models import Service
 from .forms import OrderForm
 from .models import OrderLineItem, Order
 from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
+
+from .forms import OrderForm
+from .models import Order, OrderLineItem
+
+import json
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 # Create your views here.
@@ -37,8 +60,14 @@ def checkout(request):
         # create order_form object
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            order.save()
+
             for item_id, item_data in cart.items():
+
                 try:
                     service = Service.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
@@ -53,6 +82,10 @@ def checkout(request):
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success',
                                     args=[order.order_number]))
+        else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')   
+
     else:
         # Handle GET requests
 
@@ -75,7 +108,7 @@ def checkout(request):
             currency='eur',
             payment_method_types=['card'],
         )
-
+        print(intent)
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -95,6 +128,9 @@ def checkout(request):
         else:
             order_form = OrderForm()
 
+        if not stripe_public_key:
+            messages.warning(request, 'Stripe public key is missing. \
+                Did you forget to set it in your environment?')
         # render page
         template = 'checkout/checkout.html'
         context = {

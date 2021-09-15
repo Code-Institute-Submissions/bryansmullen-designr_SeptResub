@@ -36,6 +36,7 @@
               <fieldset>
                 <legend>Payment</legend>
                 <!-- THESE FIELDS WILL BE POPULATED BY STRIPE -->
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 <div id="card-element"></div>
                 <div id="card-errors"></div>
               </fieldset>
