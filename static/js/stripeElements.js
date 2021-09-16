@@ -32,10 +32,8 @@ card.addEventListener('change', function (event) {
 
 // Handle form submit
 var form = document.getElementById('payment-form');
-console.log(form);
 
 form.addEventListener('submit', function(ev) {
-    console.log('submitting');
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
@@ -82,7 +80,6 @@ form.addEventListener('submit', function(ev) {
                 }
             },
         }).then(function(result) {
-            console.log(result);
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
@@ -97,6 +94,9 @@ form.addEventListener('submit', function(ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
+                    console.log(result.paymentIntent);
+                    console.log('firing form');
+                    console.log(form.serialize())
                     form.submit();
                 }
             }

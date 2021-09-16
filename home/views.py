@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 
 def index(request):
+    print(request.session['cart'])
     return render(request, 'home/index.html')
 
 

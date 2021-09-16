@@ -145,6 +145,7 @@ def checkout(request):
 
 def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    print('checkoutsuccess')
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -155,6 +156,7 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order processed successfully! Your order number is {order_number}. A confirmation email will be sent to {order.email}')
 
     if 'cart' in request.session:
+        print('if block')
         del request.session['cart']
 
         template = 'checkout/checkout_success.html'
