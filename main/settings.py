@@ -27,12 +27,6 @@ ALLOWED_HOSTS = ['bryansmullen-designr.herokuapp.com',
 # Application definition
 
 INSTALLED_APPS = [
-    'profiles.apps.ProfilesConfig',
-    'checkout.apps.CheckoutConfig',
-    'cart.apps.CartConfig',
-    'portfolio.apps.PortfolioConfig',
-    'services.apps.ServicesConfig',
-    'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +38,13 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'profiles.apps.ProfilesConfig',
+    'checkout.apps.CheckoutConfig',
+    'cart.apps.CartConfig',
+    'portfolio.apps.PortfolioConfig',
+    'services.apps.ServicesConfig',
+    'home.apps.HomeConfig',
+    'blog.apps.BlogConfig'
 ]
 
 SITE_ID = 1
