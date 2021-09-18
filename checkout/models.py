@@ -42,7 +42,6 @@ class Order(models.Model):
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
 
-        print(type(self.order_total))
         vat_amount = decimal.Decimal(self.order_total) * decimal.Decimal(vat_rate)
         self.grand_total = self.order_total + vat_amount
         self.save()
