@@ -35,21 +35,7 @@
     {% endblock corecss %}
     
     {% block extra_css %} {% endblock extra_css %}
-  </head>
 
-  <body>
-    {% include 'partials/_navbar.html' %} 
-    {% if messages %}
-    <div class="yellow text-center">
-        {% for message in messages %}
-               {{message}}
-        {% endfor %}
-    </div>
-    {% endif %}
-    {% block content %} {% endblock content %} 
-    
-    {% include 'partials/_footer.html' %} 
-    
     {% block corejs %}
 
     <!-- Matierialize JS import -->
@@ -67,6 +53,22 @@
     <script src="{% static 'js/initSidenav.js' %}" defer></script>
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock corejs %} 
+  </head>
+
+  <body>
+    {% include 'partials/_navbar.html' %} 
+    {% if messages %}
+    <div class="yellow text-center">
+        {% for message in messages %}
+               {{message}}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% block content %} {% endblock content %} 
+    
+    {% include 'partials/_footer.html' %} 
+    
+   
     
     {% block extra_js %} {% endblock extra_js %} 
     {% block postloadjs %} {% endblock postloadjs %} 

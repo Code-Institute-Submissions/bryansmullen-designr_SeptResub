@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    print(request.session['cart'])
+    print(request.session.get("cart", {}))
     return render(request, 'home/index.html')
 
 

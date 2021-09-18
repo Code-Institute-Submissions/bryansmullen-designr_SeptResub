@@ -51,6 +51,7 @@ form.addEventListener('submit', function(ev) {
     var url = '/checkout/cache_checkout_data/';
 
     $.post(url, postData).done(function () {
+        console.log("confirm payment")
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -96,8 +97,8 @@ form.addEventListener('submit', function(ev) {
                 if (result.paymentIntent.status === 'succeeded') {
                     console.log(result.paymentIntent);
                     console.log('firing form');
-                    console.log(form.serialize())
                     form.submit();
+                    console.log("form submitted");
                 }
             }
         });
