@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <h1> BLOG NEW </h1>
+ <form action=" {% url 'blog_new' %}" method="post" id="blog-form">
+    {% csrf_token %}
+    {{blog_entry_form.title}}
+        {{blog_entry_form.content}}
+        {{blog_entry_form.date_entered}}
+        <button id='submit-button' class="btn red darken-3">Add Blog Entry</button>
+    </form>
+
+
+{% endblock content %}

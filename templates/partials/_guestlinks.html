@@ -7,6 +7,15 @@
     {% endif %}
 ><a href="{% url 'portfolio' %}">Portfolio</a></li>
 
+<!-- Blog Link -->
+<li
+  {% if 'blog' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'blog_entry_list' %}">Blog</a></li>
+
 <!-- Register Link -->
 <li
   {% if 'register' in request.path %}

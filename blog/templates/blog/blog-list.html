@@ -5,15 +5,20 @@
  <h1> BLOG LIST </h1>
  
  {% for blog in blog_entries %}
- <h2>
-     {{blog.title}}
- </h2>
+ <a href="{% url 'blog_detail' blog_id=blog.id %}" >
+     <h2>
+         {{blog.title}}
+    </h2>
+</a>
+
  <p>
      {{blog.content}}
 </p>
 <p><small>{{blog.author}}</small></p>
 <p><small>{{blog.date_entered}}</small></p>
 
+
 {% endfor %}
+<a href="{% url 'blog_new' %}" class='btn red darken-4'>New Blog Entry</a>
 
 {% endblock content %}

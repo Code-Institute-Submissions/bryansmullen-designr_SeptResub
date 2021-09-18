@@ -8,6 +8,15 @@
 ><a href="{% url 'index' %}">Home</a>
 </li>
 
+<!-- Blog Link -->
+<li
+  {% if 'blog' in request.path %}
+    class="active"
+  {% else %}
+    class=""
+  {% endif %}
+><a href="{% url 'blog_entry_list' %}">Blog</a></li>
+
 <!-- Portfolio Link -->
 <li
     {% if 'portfolio' in request.path %}
