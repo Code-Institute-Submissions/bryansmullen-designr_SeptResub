@@ -69,3 +69,11 @@
 </main>
 
 {% endblock %}
+
+{% block postloadjs %}
+<script type="text/javascript">
+const rememberMe = document.getElementById('id_remember')
+rememberMe.parentNode.remove()
+</script>
+  {% endblock postloadjs %}
+

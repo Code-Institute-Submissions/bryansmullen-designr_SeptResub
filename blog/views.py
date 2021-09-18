@@ -5,7 +5,7 @@ from .forms import BlogEntryForm
 from datetime import datetime
 
 
-@login_required(login_url='/users/login')
+@login_required(login_url='/accounts/login/')
 def blog_entry_list(request):
     blog_entries = BlogEntry.objects.all()
     for blog in blog_entries:
@@ -17,7 +17,7 @@ def blog_entry_list(request):
     return render(request, 'blog/blog-list.html', context)
 
 
-@login_required(login_url='/users/login/<blog_id>')
+@login_required(login_url='/accounts/login/')
 def blog_detail(request, blog_id):
 
     blog_entry = BlogEntry.objects.get(id=blog_id)
@@ -27,7 +27,7 @@ def blog_detail(request, blog_id):
     return render(request, 'blog/blog-detail.html', context)
 
 
-@login_required(login_url='/users/login/<blog_id>')
+@login_required(login_url='/accounts/login/')
 def blog_new(request):
     if request.method == 'POST':
         # Handle POST request
@@ -47,7 +47,7 @@ def blog_new(request):
         return render(request, 'blog/blog-add-edit.html', context)
 
 
-@login_required(login_url='/users/login/')
+@login_required(login_url='/accounts/login/')
 def blog_edit(request, blog_id):
     if request.method == 'POST':
         # Handle POST request
@@ -70,7 +70,7 @@ def blog_edit(request, blog_id):
         return render(request, 'blog/blog-add-edit.html', context)
 
 
-@login_required(login_url='/users/login/')
+@login_required(login_url='/accounts/login/')
 def blog_delete(request, blog_id):
     if request.method == 'POST':
         # Handle POST request
