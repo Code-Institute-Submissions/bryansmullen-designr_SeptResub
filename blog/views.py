@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect,reverse
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 from .models import BlogEntry
 from .forms import BlogEntryForm
 from datetime import datetime
@@ -49,8 +49,10 @@ def blog_new(request):
 def blog_edit(request, blog_id):
     if request.method == 'POST':
         # Handle POST request
-        # new_blog_entry = BlogEntry(title=request.POST['title'], content=request.POST['content'], author=request.user, date_entered=datetime.now())
-        # new_blog_entry.save()
+        existing_entry = BlogEntry.objects.get(id=blog_id)
+        existing_entry.title = request.POST['title']
+        existing_entry.content = request.POST['content']
+        existing_entry.save()
         return redirect(reverse('blog_entry_list'))
     else:
         # Handle GET Request
@@ -60,6 +62,24 @@ def blog_edit(request, blog_id):
 
         context = {
             'blog_entry_form': blog_entry_form,
-            'function': 'edit'
+            'function': 'edit',
+            'blog_id': blog_id
         }
         return render(request, 'blog/blog-add-edit.html', context)
+
+
+@login_required(login_url='/users/login/')
+def blog_delete(request, blog_id):
+    if request.method == 'POST':
+        # Handle POST request
+        blog_entry = BlogEntry.objects.get(id=blog_id)
+        blog_entry.delete()
+
+        return redirect(reverse('blog_entry_list'))
+    else:
+        # Handle GET Request
+        blog_entry = BlogEntry.objects.get(id=blog_id)
+        context = {
+            'blog_entry': blog_entry
+        }
+        return render(request, 'blog/blog-delete.html', context)
