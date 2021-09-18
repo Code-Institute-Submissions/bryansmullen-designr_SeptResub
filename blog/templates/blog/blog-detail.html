@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <h1> BLOG DETAIL {{blog_entry.id}}</h1>
+ <p>{{blog_entry.content}}</p>
+ <p><small>{{blog_entry.author}}</small></p>
+ <p><small>{{blog_entry.date_entered}}</small></p>
+ 
+
+
+{% endblock content %}
