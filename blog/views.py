@@ -38,6 +38,28 @@ def blog_new(request):
         blog_entry_form = BlogEntryForm()
 
         context = {
-            'blog_entry_form': blog_entry_form
+            'blog_entry_form': blog_entry_form,
+            'function': 'add'
         }
-        return render(request, 'blog/blog-new.html', context)
+        return render(request, 'blog/blog-add-edit.html', context)
+
+
+
+@login_required(login_url='/users/login/')
+def blog_edit(request, blog_id):
+    if request.method == 'POST':
+        # Handle POST request
+        # new_blog_entry = BlogEntry(title=request.POST['title'], content=request.POST['content'], author=request.user, date_entered=datetime.now())
+        # new_blog_entry.save()
+        return redirect(reverse('blog_entry_list'))
+    else:
+        # Handle GET Request
+        current_blog_data = BlogEntry.objects.get(id=blog_id)
+
+        blog_entry_form = BlogEntryForm(instance=current_blog_data)
+
+        context = {
+            'blog_entry_form': blog_entry_form,
+            'function': 'edit'
+        }
+        return render(request, 'blog/blog-add-edit.html', context)

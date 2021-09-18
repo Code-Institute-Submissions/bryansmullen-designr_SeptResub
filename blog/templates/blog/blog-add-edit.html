@@ -2,13 +2,23 @@
 {% load static %}
 
 {% block content %}
+{% if function == 'add' %}
  <h1> BLOG NEW </h1>
+ {% else %}
+ <h1> BLOG EDIT </h1>
+
+ {% endif %}
  <form action=" {% url 'blog_new' %}" method="post" id="blog-form">
     {% csrf_token %}
     {{blog_entry_form.title}}
         {{blog_entry_form.content}}
         {{blog_entry_form.date_entered}}
+
+        {% if function == 'add' %}
         <button id='submit-button' class="btn red darken-3">Add Blog Entry</button>
+        {% else %}
+        <button id='submit-button' class="btn red darken-3">Edit Blog Entry</button>
+        {% endif %}
     </form>
 
 

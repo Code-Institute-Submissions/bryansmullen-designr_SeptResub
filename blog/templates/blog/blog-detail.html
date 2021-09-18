@@ -7,6 +7,9 @@
  <p><small>{{blog_entry.author}}</small></p>
  <p><small>{{blog_entry.date_entered}}</small></p>
 
+{% if request.user.is_staff %}
+<a href="{% url 'blog_edit' blog_id=blog_entry.id %}" class="btn red darken-3">Edit Blog Entry</a>
 
+{% endif %}
 
 {% endblock content %}
