@@ -1,31 +1,47 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
-{% if function == 'add' %}
- <h1> BLOG NEW </h1>
- {% else %}
- <h1> BLOG EDIT </h1>
+<div class="background"></div>
+<div class="overlay"></div>
 
- {% endif %}
+<main class="container splash-container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-title text-center">
+          {% if function == 'add' %}
+          <h1>Add Blog Entry</h1>
+          {% else %}
+          <h1>Edit Blog Entry</h1>
+          {% endif %}
+        </div>
+        <hr />
 
- {% if function == 'add' %}
- <form action=" {% url 'blog_new' %}" method="post" id="blog-form">
- {% else %}
- <form action=" {% url 'blog_edit' blog_id=blog_id %}" method="post" id="blog-form">
- {% endif %}
-
-    {% csrf_token %}
-    {{blog_entry_form.title}}
-        {{blog_entry_form.content}}
-        {{blog_entry_form.date_entered}}
-
-        {% if function == 'add' %}
-        <button id='submit-button' class="btn red darken-3">Add Blog Entry</button>
-        {% else %}
-        <button id='submit-button' class="btn red darken-3">Edit Blog Entry</button>
-        {% endif %}
-    </form>
-
+        <div class="card-content text-center">
+          {% if function == 'add' %}
+          <form action=" {% url 'blog_new' %}" method="post" id="blog-form">
+            {% else %}
+            <form
+              action=" {% url 'blog_edit' blog_id=blog_id %}"
+              method="post"
+              id="blog-form"
+            >
+              {% endif %} {% csrf_token %} {{blog_entry_form.title}}
+              {{blog_entry_form.content}} {{blog_entry_form.date_entered}} 
+              {% if function == 'add' %}
+              <button id="submit-button" class="btn red darken-3">
+                Add Blog Entry
+              </button>
+              {% else %}
+              <button id="submit-button" class="btn red darken-3">
+                Edit Blog Entry
+              </button>
+              {% endif %}
+            </form>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 {% endblock content %}

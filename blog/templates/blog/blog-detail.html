@@ -1,15 +1,43 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
- <h1> BLOG DETAIL {{blog_entry.id}}</h1>
- <p>{{blog_entry.content}}</p>
- <p><small>{{blog_entry.author}}</small></p>
- <p><small>{{blog_entry.date_entered}}</small></p>
+<div class="background"></div>
+<div class="overlay"></div>
 
-{% if request.user.is_staff %}
-<a href="{% url 'blog_edit' blog_id=blog_entry.id %}" class="btn red darken-3">Edit Blog Entry</a>
+<main class="container splash-container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-title text-center">
+          <h1>{{blog_entry.title}}</h1>
+          <p><small>{{blog_entry.author}}</small></p>
+          <p><small>{{blog_entry.date_entered}}</small></p>
+        </div>
+        <hr />
 
-{% endif %}
+        <div class="card-content text-center">
+          <p>{{blog_entry.content}}</p>
+        </div>
+
+        <div class="card-action red darken-3 text-center">
+          {% if request.user.is_staff %}
+          <a class="white-text" href="{% url 'blog_entry_list' %}">
+            <button class="btn red darken-3">
+              <small>Return To Blog List</small>
+            </button>
+          </a>
+          {% endif %}
+          <a
+            class="white-text"
+            href="{% url 'blog_edit' blog_id=blog_entry.id %}"
+          >
+            <button class="btn red darken-3">
+              <small>Edit Blog</small>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 {% endblock content %}

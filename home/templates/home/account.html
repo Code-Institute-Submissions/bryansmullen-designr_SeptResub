@@ -1,25 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="background"></div>
+<div class="overlay"></div>
 
-{% block content %}
-  <div class="background"></div>
-  <div class="overlay"></div>
-
-  <main class="container splash-container">
-    <div class="row">
-      <div class="col s12">
-        <div class="card">
-          <div class="card-content">
-            <h1 class="text-center">My Account</h1>
-          </div>
-          <div class="text-center">
-            <p><span class="bold">User Name: </span>{{ user.name }} </p>
-            <p><span class="bold">User Email: </span>{{ user.email }} <a class="red-text"  href="{% url 'account_email' %}"><i class="fas fa-edit"></i></a></p>
-            <p><span class="bold">User Password: </span>******** <a class="red-text"  href="{% url 'account_change_password' %}"><i class="fas fa-edit"></i></a></p>
-          </div>
-
+<main class="container splash-container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <h1 class="text-center">My Account</h1>
+        </div>
+        <div class="text-center">
+          <p><span class="bold">User Name: </span>{{ user.name }}</p>
+          <p>
+            <span class="bold">User Email: </span>{{ user.email }}
+            <a class="red-text" href="{% url 'account_email' %}"
+              ><i class="fas fa-edit"></i
+            ></a>
+          </p>
+          <p>
+            <span class="bold">User Password: </span>********
+            <a class="red-text" href="{% url 'account_change_password' %}"
+              ><i class="fas fa-edit"></i
+            ></a>
+          </p>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 
 {% endblock content %}

@@ -18,6 +18,8 @@ class BlogEntryForm(forms.ModelForm):
         }
 
         self.fields['title'].widget.attrs['autofocus'] = True
+        self.fields['content'].widget.attrs['class'] = "materialize-textarea"
+
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
