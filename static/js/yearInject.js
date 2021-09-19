@@ -1,8 +1,8 @@
 // Generate current date
-const date = new Date();
+var date = new Date();
 
 // Extract current year
-const currentYear = date.getFullYear()
+var currentYear = date.getFullYear();
 
 // Inject current year into #year element
-document.getElementById('year').innerHTML = currentYear
+document.getElementById('year').innerHTML = currentYear;
