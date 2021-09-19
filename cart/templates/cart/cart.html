@@ -25,6 +25,7 @@
             <th>Service Id</th>
             <th>Service Name</th>
             <th>Quantity</th>
+            <th>Remove</th>
           </tr>
           </thead>
 
@@ -40,7 +41,7 @@
                 <form method="post" action="{% url 'remove_from_cart' item.id %}">
                   {% csrf_token %}
                   <input type="hidden" value="{{ item.id }}"/>
-                  <input type="submit" value="remove">
+                  <input type="submit" value="remove" class='btn red darken-3'>
                   <input type="hidden" name="redirect_url" value="{{ request.path }}"/>
 
                 </form>
