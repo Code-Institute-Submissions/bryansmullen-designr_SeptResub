@@ -19,8 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# TODO: REMOVE THIS BEFORE SUBMISSION
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['bryansmullen-designr.herokuapp.com',
                  'localhost', '127.0.0.1']
@@ -131,15 +130,15 @@ else:
             '.UserAttributeSimilarityValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation' + 
+            'NAME': 'django.contrib.auth.password_validation' +
             '.MinimumLengthValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation' + 
+            'NAME': 'django.contrib.auth.password_validation' +
             '.CommonPasswordValidator',
         },
         {
-            'NAME': 'django.contrib.auth.password_validation' + 
+            'NAME': 'django.contrib.auth.password_validation' +
             '.NumericPasswordValidator',
         },
     ]

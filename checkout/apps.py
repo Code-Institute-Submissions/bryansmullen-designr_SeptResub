@@ -1,6 +1,7 @@
 # flake8: noqa
 from django.apps import AppConfig
 
+
 class CheckoutConfig(AppConfig):
     name = 'checkout'
 
