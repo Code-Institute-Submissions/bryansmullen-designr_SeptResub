@@ -344,8 +344,6 @@ checkout/forms.py fails pep8 validation over a line that is 80 characters long. 
 
 ## Deployment
 
-### Gitpod
-
 ### Heroku
 
 This project is deployed on Heroku, which can be accessed at [Designr](https://github.com/bryansmullen/designr) or [Designr Deployed Version](https://bryansmullen-designr.herokuapp.com/). The deployment is linked to the Master Branch of the repo, and will automatically update the deployment when any changes are committed to this branch of the remote repository. The deployment procedure is documented below.
@@ -362,14 +360,12 @@ This project is deployed on Heroku, which can be accessed at [Designr](https://g
 
 ## Cloning a Local Version
 
-The procedure for cloning a local version on a windows machine is detailed below. Instructions for Mac/Linux will be considered at a later date.
+# Prerequisites
+You must have git installed on your local environment to clone a local version of this repository. You will also require python and pip in your local environment.
 
-- Ensure Git, Python, Pip, and PyCharm are installed on your machine
-- Clone the [github repository](https://github.com/bryansmullen/designr) using `git clone https://github.com/bryansmullen/designr.git`
-- Within the created folder, create and activate a virtual environment
-- Install the project requirements within the virtual environment the requirements.txt file
-- Inside the main directory, rename sampleenvfile to .env and add values for each env variable
-- In your terminal, navigated to the project directory, run `python manage.py runserver`
+1. In your terminal, run `git clone https://github.com/bryansmullen/designr.git` to clone the repository into a new folder on your machine
+
+
 
 # Acknowledgements
 
