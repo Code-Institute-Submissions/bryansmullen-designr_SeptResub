@@ -151,7 +151,7 @@ def checkout_success(request, order_number):
         order = get_object_or_404(Order, order_number=order_number)
     messages.success(
         request, 'Order processed successfully! Your order number is' +
-        f'{order_number}. A confirmation email will be sent to {order.email}')
+        f'{order_number}. We will be in touch with you shortly!')
 
     if 'cart' in request.session:
         print('if block')
