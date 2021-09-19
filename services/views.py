@@ -4,8 +4,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Service
 
 
-@login_required(login_url='/users/login')
+@login_required(login_url='/account/login')
 def services(request):
+    """
+    This function returns all available services
+    """
     services = Service.objects.all()
     context = {
         'services': services
