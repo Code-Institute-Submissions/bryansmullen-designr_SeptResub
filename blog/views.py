@@ -16,7 +16,6 @@ def blog_entry_list(request):
     return render(request, 'blog/blog-list.html', context)
 
 
-@login_required(login_url='/accounts/login/')
 def blog_detail(request, blog_id):
 
     blog_entry = BlogEntry.objects.get(id=blog_id)
