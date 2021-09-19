@@ -58,6 +58,6 @@
 
 <!-- My Designs Link -->
 <li>
-  <a href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+  <a href="javascript:{document.querySelector('.logout').submit()}" class='logout'>Logout</a>
   <form action="{% url 'account_logout' %}" method="POST">{% csrf_token %}</form>
 </li>
