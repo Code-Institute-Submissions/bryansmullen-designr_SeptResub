@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import PortfolioEntry
 
 
 def portfolio(request):
-    return render(request, 'portfolio/portfolio.html')
+    portfolio_entries = PortfolioEntry.objects.all()
+    context = {
+        'portfolio_entries': portfolio_entries
+    }
+    return render(request, 'portfolio/portfolio.html', context)
