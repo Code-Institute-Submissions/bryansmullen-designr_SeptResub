@@ -5,7 +5,6 @@ from .forms import BlogEntryForm
 from datetime import datetime
 
 
-@login_required(login_url='/accounts/login/')
 def blog_entry_list(request):
     blog_entries = BlogEntry.objects.all()
     for blog in blog_entries:

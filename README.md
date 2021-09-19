@@ -286,16 +286,37 @@ The following browsers are tested:
 - Brave
 - Chrome
 
+
+| Use Case # | As A Persona | I Want to  | So That |
+| --- | --- | --- | ---| 
+
+| 1.4 | As an unauthenticated user | I want to browse the blog  | I can see what value the designer can provide for me  |
+| 2.1 | As an authenticated user | I want to order services from the designer | I can have custom designs made for me |
+| 2.2 | As an authenticated user | I want to pay for my order through the app | I can purchase the service there and then |
+| 3.1 | As a business owner | I want to display my portfolio | I can showcase my work |
+| 3.2 | As a business owner | I want to update a blog | To generate traffic to my website and to add value to my services |
+| 3.3 | As a business owner | I want to sell my services | To generate income |
+| 3.4 | As a business owner | I want to see past orders | I can contact the payee to discuss their design needs |
+
+
 ## User Story Testing
 
-| Use Case # | As Persona | Want to | Expected Results | Pass/Fail |
-| --- | --- | --- | ---| --- |
-| 1.1 | As a user | I want to Create An Account |Enter Your Credentials and Click Sign Up.  |  |
-|  | |  | Receive Notification To Check Email. |  |
-|  | |  | Receive Notification To Check Email. |  |
-| 1.2 | As a user | I want to Create An Account |Enter Your Credentials and Click Sign Up.  |  |
-|  | |  | Receive Notification To Check Email. |  |
-|  | |  | Receive Notification To Check Email. |  |
+| Maps To User Story # | Steps To Recreate                                                                                  | Expected Results                                        | Pass/Fail |
+| ---                  | ---                                                                                                | ---                                                     | ---       | 
+| 1.1                  | Navigate to [Home Page](https://bryansmullen-designr.herokuapp.com/*)                              | Home page should render                                 | &check;   |
+|                      | Click on register Nav Link                                                                         | Registration page should render                         | &check;   |
+|                      | Enter a valid email address, username, password, and repeat the same password, and click 'sign up' | A message is rendered instructing user to check email   | &check;   |
+|                      | User checks email, finds relevant email and clicks on confirmation link                            | Confirm email page is rendered                          | &check;   |
+|                      | User clicks 'confirm' button to confirm email address                                              | Message is displayed saying email is confirmed, user redirected to sign in page                   | &check;   |
+|                      | User enters email and password on sign in page and clicks sign in                                  | User successfully granted access and redirected to home page | &check;   |
+| 1.2                  | Navigate to [Home Page](https://bryansmullen-designr.herokuapp.com/*)                              | Home page should render                                 | &check;   |
+|                      | Click on Login Nav Link                                                                         | Registration page should render                         | &check;   |
+|                      | User enters email and password on sign in page and clicks sign in                                  | User successfully granted access and redirected to home page | &check;   |
+| 1.3                  | Navigate to [Home Page](https://bryansmullen-designr.herokuapp.com/*)                              | Home page should render                                 | &check;   |
+|                      | Click on Portfolio Nav Link                                                                        | Portfolio page should render                         | &check;   |
+| 1.4                  | Navigate to [Home Page](https://bryansmullen-designr.herokuapp.com/*)                              | Home page should render                                 | &check;   |
+|                      | Click on Blog Nav Link                                                                             | Blog page should render                         | &check;   |
+                                                                    
 
 
 
