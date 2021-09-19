@@ -74,16 +74,14 @@
 
         <div class="card-content col s12 m6">
           <span class="card-title">There are no items in your cart.</span>
-          <a href="{% url 'services' %}">
-            <button class="btn red darken-3">View services</button>
-          </a>
+            <a href="{% url 'services' %}" class="btn red darken-3">View services</a>
 
         </div>
       </div>
     {% endif %}
 
-  <a class="row">
-    <a href="{% url 'checkout' %}"><button type="submit" class="btn red darken-3">Go To Checkout</button></a>
+  <div class="row">
+    <a  class="btn red darken-3" href="{% url 'checkout' %}">Go To Checkout</a>
   </div>
 
 
