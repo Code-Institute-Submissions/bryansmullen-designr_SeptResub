@@ -18,13 +18,15 @@
             <h4>{{blog.title}}</h4>
           </a>
 
+          {% if request.user.is_staff %}
+
           <a class="white-text" href="{% url 'blog_edit' blog_id=blog.id %}">
             <i class="fas fa-edit"></i>
           </a>
           <a class="white-text" href="{% url 'blog_delete' blog_id=blog.id %}">
             <i class="fas fa-trash"></i>
           </a>
-
+          {% endif %}
           <p>{{blog.content}}</p>
           <p><small>Posted by: {{blog.author}}</small></p>
           <p><small>{{blog.date_entered}}</small></p>

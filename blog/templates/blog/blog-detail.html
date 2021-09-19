@@ -25,7 +25,6 @@
               <small>Return To Blog List</small>
             </button>
           </a>
-          {% endif %}
           <a
             class="white-text"
             href="{% url 'blog_edit' blog_id=blog_entry.id %}"
@@ -34,6 +33,7 @@
               <small>Edit Blog</small>
             </button>
           </a>
+          {% endif %}
         </div>
       </div>
     </div>
