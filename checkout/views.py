@@ -35,6 +35,7 @@ def cache_checkout_data(request):
 
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def checkout(request):
     """
     Display checkout page
