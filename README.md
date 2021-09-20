@@ -293,7 +293,7 @@ The following browsers are tested:
 - Brave
 - Chrome
 
-## User Story Testing
+### User Story Testing
 
 | Maps To User Story # | Steps To Recreate  | Expected Results  | Pass/Fail |
 | ---  | ---  | --- | --- | 
@@ -346,8 +346,39 @@ The following browsers are tested:
 | | Click on Orders under the Checkout Heading | List of previous orders should display | &check; |
 | | Click on any order | Details of order including contact details for the customer should display | &check; |
 
+### Form Validation Testing
+
+| Test Case # | Form | Url | Test | Expectation | Pass |
+| --- | --- | --- | --- | --- | --- |
+| 1.1 | Login | https://bryansmullen-designr.herokuapp.com/accounts/login/ | Omit username | Form should not submit | &check; |
+| 1.2 | Login | https://bryansmullen-designr.herokuapp.com/accounts/login/ | Omit password | Form should not submit| &check; |
+| 1.3 | Login | https://bryansmullen-designr.herokuapp.com/accounts/login/ | Invalid username | Form should display error | &check; |
+| 1.4 | Login | https://bryansmullen-designr.herokuapp.com/accounts/login/ | Incorrect password | Form should display error | &check; |
+| 1.5 | Login | https://bryansmullen-designr.herokuapp.com/accounts/login/ | Omit username & password | Form should not submit | &check; |
+| 2.1 | Register | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | Omit username | Form should not submit | &check; |
+| 2.1 | Register | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | Omit email | Form should not submit | &check; |
+| 2.1 | Register | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | Omit password | Form should not submit | &check; |
+| 2.1 | Register | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | Omit confirm Password | Form should not submit | &check; |
+| 2.1 | Register | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | Passwords don't match | Form should display error | &check; |
+| 3.1 | New Blog | https://bryansmullen-designr.herokuapp.com/blog/new/ | Omit Title| Form should not submit | &check; |
+| 3.1 | New Blog | https://bryansmullen-designr.herokuapp.com/blog/new/ | Omit Full Name | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Email | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Invalid Email | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Phone Number | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Street Address 1 | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Street Address 2 | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Town | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit County | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Country | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Postcode | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Card Number | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit Expiry Date | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Omit CVV | Form should not submit | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Invalid Card | Form Should Display Error | &check; |
+| 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Expiry In Future | Form Should Display Error | &check; |
+
 ---
-Navigate to [Home Page](https://bryansmullen-designr.herokuapp.com/*)  | Home page should render | &check; |
+
 ## Issues
 
 Profiles Page Fails HTML Validation due to stray tags generated automatically by django's forms
@@ -424,6 +455,7 @@ You must have gitpod account to clone a development version of this repository. 
 
 # Acknowledgements
 
+
 Home BG Photo by Max Vakhtbovych from Pexels
 
 Design examples:
@@ -434,3 +466,9 @@ Design examples:
 - Photo by Ann H from Pexels
 - Photo by eric anada from Pexels
 - Photo by alleksana from Pexels
+
+---
+
+- Thanks to Kieron in CI Student care for the patience and encouragement, the entire team in tutor support, and Tim & Rohit in the mentor team for their support in this resubmission.
+- Extra special thanks to @ngiap for above-and-beyond levels of motivation & support to push the final few lengths to get this project over the line.
+- Finally Ciara, thank you now and always for the opportunity.
