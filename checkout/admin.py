@@ -4,12 +4,17 @@ from .models import Order, OrderLineItem
 
 
 class OrderLineItemAdminInline(admin.TabularInline):
+    """
+    This class defines how OrderLineItem will be displayed in the admin backend
+    """
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
 
 
 class OrderAdmin(admin.ModelAdmin):
-
+    """
+    This class defines how Orders will be displayed in the admin backend
+    """
     readonly_fields = ('order_number', 'date', 'order_total',
                        'grand_total', 'original_cart', 'stripe_pid')
 

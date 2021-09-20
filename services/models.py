@@ -2,6 +2,9 @@ from django.db import models
 
 
 class Service(models.Model):
+    """
+    This class defines the Service model
+    """
     name = models.CharField(max_length=50)
     description = models.TextField()
     price = models.IntegerField()

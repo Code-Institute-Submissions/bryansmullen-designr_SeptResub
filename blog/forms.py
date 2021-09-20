@@ -4,6 +4,9 @@ from .models import BlogEntry
 
 
 class BlogEntryForm(forms.ModelForm):
+    """
+    This class defines the form used for blog entries
+    """
     class Meta:
         model = BlogEntry
         fields = (

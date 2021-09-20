@@ -6,6 +6,7 @@ from .models import Service
 
 @login_required(login_url='/account/login')
 def services(request):
+    """ Display services """
     services = Service.objects.all()
     context = {
         'services': services

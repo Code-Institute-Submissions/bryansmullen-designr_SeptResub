@@ -4,6 +4,9 @@ from services.models import Service
 
 
 def cart_contents(request):
+    """
+    Shopping Cart Context To Access Cart Items etc
+    """
     cart_items = []
     subtotal = 0
     vat = subtotal * settings.VAT_RATE_PERCENTAGE

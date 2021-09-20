@@ -3,6 +3,7 @@ from .models import PortfolioEntry
 
 
 def portfolio(request):
+    """ Display portfolio page """
     portfolio_entries = PortfolioEntry.objects.all()
     context = {
         'portfolio_entries': portfolio_entries

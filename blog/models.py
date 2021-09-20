@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 class BlogEntry(models.Model):
+    """
+    This class defines the BlogEntry model
+    """
     title = models.CharField(max_length=255)
     content = models.TextField()
     author = models.ForeignKey(

@@ -14,7 +14,9 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
-    print('cache')
+    """
+    Temporarily cache checkout data for stripe workflow
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -32,7 +34,9 @@ def cache_checkout_data(request):
 
 # Create your views here.
 def checkout(request):
-
+    """
+    Display checkout page
+    """
     # define stripe public & secret keys
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -105,7 +109,6 @@ def checkout(request):
             currency='eur',
             payment_method_types=['card'],
         )
-        print(intent)
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -140,8 +143,10 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
+    """
+    Display checkout success page
+    """
     order = get_object_or_404(Order, order_number=order_number)
-    print('checkoutsuccess')
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -154,7 +159,6 @@ def checkout_success(request, order_number):
         f'{order_number}. We will be in touch with you shortly!')
 
     if 'cart' in request.session:
-        print('if block')
         del request.session['cart']
 
         template = 'checkout/checkout_success.html'

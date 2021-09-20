@@ -6,6 +6,9 @@ from datetime import datetime
 
 
 def blog_entry_list(request):
+    """
+    List all blog entries
+    """
     blog_entries = BlogEntry.objects.all()
     for blog in blog_entries:
         if len(blog.content) > 500:
@@ -17,7 +20,9 @@ def blog_entry_list(request):
 
 
 def blog_detail(request, blog_id):
-
+    """
+    Display detail of one blog entry
+    """
     blog_entry = BlogEntry.objects.get(id=blog_id)
     context = {
         'blog_entry': blog_entry
@@ -27,6 +32,9 @@ def blog_detail(request, blog_id):
 
 @login_required(login_url='/accounts/login/')
 def blog_new(request):
+    """
+    Create new blog entry
+    """
     if request.method == 'POST':
         # Handle POST request
         new_blog_entry = BlogEntry(
@@ -47,6 +55,9 @@ def blog_new(request):
 
 @login_required(login_url='/accounts/login/')
 def blog_edit(request, blog_id):
+    """
+    Edit existing blog entry
+    """
     if request.method == 'POST':
         # Handle POST request
         existing_entry = BlogEntry.objects.get(id=blog_id)
@@ -70,6 +81,9 @@ def blog_edit(request, blog_id):
 
 @login_required(login_url='/accounts/login/')
 def blog_delete(request, blog_id):
+    """
+    Delete existing blog entry
+    """
     if request.method == 'POST':
         # Handle POST request
         blog_entry = BlogEntry.objects.get(id=blog_id)
