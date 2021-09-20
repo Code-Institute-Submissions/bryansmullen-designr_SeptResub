@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import BlogEntry
 from .forms import BlogEntryForm
 from datetime import datetime
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 def blog_entry_list(request):
@@ -30,7 +31,7 @@ def blog_detail(request, blog_id):
     return render(request, 'blog/blog-detail.html', context)
 
 
-@login_required(login_url='/accounts/login/')
+@staff_member_required(login_url='/accounts/login/')
 def blog_new(request):
     """
     Create new blog entry
@@ -53,7 +54,7 @@ def blog_new(request):
         return render(request, 'blog/blog-add-edit.html', context)
 
 
-@login_required(login_url='/accounts/login/')
+@staff_member_required(login_url='/accounts/login/')
 def blog_edit(request, blog_id):
     """
     Edit existing blog entry
@@ -79,7 +80,7 @@ def blog_edit(request, blog_id):
         return render(request, 'blog/blog-add-edit.html', context)
 
 
-@login_required(login_url='/accounts/login/')
+@staff_member_required(login_url='/accounts/login/')
 def blog_delete(request, blog_id):
     """
     Delete existing blog entry
