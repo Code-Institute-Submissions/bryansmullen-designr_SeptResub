@@ -54,6 +54,10 @@ a `business owner` to showcase their work, accept new commissions, and deliver c
 
 TODO
 
+## Data Structure
+
+The database schema of the relational database is described visually in an ERD chart found [here](./docs/data/erd.png)
+
 ## Wireframes
 
 Wireframes are available [here](./docs/wireframes/wireframes.pdf)]
@@ -70,6 +74,9 @@ Wireframes are available [here](./docs/wireframes/wireframes.pdf)]
 - [AWS](https://docs.aws.amazon.com/index.html) - Static File Hosting
 - [Heroku](https://devcenter.heroku.com/categories/reference) - Application Hosting
 - [AllAuth](https://django-allauth.readthedocs.io/en/latest/) - Authentication Plugin for Django
+- [Django Extensions](https://django-extensions.readthedocs.io/en/latest/index.html) - Used to generate ERD Document
+- [Pygraphviz](https://pygraphviz.github.io/) - Used to generate ERD Document
+
 
 - In the absence of a specific, detailed and comprehensive module on automated testing provided by the course, manual testing has been opted for. It is assumed that this will not be penalised.
 - The deployed, live version of the site was utilised for the tests.
@@ -286,15 +293,6 @@ The following browsers are tested:
 - Brave
 - Chrome
 
-
-| Use Case # | As A Persona | I Want to  | So That |
-| --- | --- | --- | ---| 
-
-| 3.2 | As a business owner | I want to update a blog | To generate traffic to my website and to add value to my services |
-| 3.3 | As a business owner | I want to sell my services | To generate income |
-| 3.4 | As a business owner | I want to see past orders | I can contact the payee to discuss their design needs |
-
-
 ## User Story Testing
 
 | Maps To User Story # | Steps To Recreate  | Expected Results  | Pass/Fail |
@@ -328,9 +326,25 @@ The following browsers are tested:
 |  | Click on 'go to checkout button | User redirected to checkout page | &check; |
 |  | Enter Any Missing Personal or address information and enter a valid card number (use 4242 4242 4242 4242 / 4242 / 42424 for testing) and click 'complete order' | User redirected to checkout success page | &check; |
 | 3.1 | Navigate to [Admin Page](https://bryansmullen-designr.herokuapp.com/admin)  | Admin Login page should render | &check; |
-|
-
-| 3.1 | As a business owner | I want to display my portfolio | I can showcase my work |
+| | Enter superuser credentials and click log in | User should be redirected to site backend | &check; |
+| | Click on the add button next to Portfolio Entrys | Add portfolio entry page should be displayed | &check; |
+| | Add a title, content, and image of the portfolio artwork desired  and click save | User should be redirected to list of portfolio entries and success message should display  | &check; |
+| | Navigate to [Portfolio Page](https://bryansmullen-designr.herokuapp.com/portfolio/) | Portfolio page should display with new content | &check; |
+| 3.2 | Navigate to [Home Page](https://bryansmullen-designr.herokuapp.com/)  | Home page should render | &check; |
+|  | Click on Login Nav Link  | Registration page should render | &check; |
+|  | User enters existing superuser account email and password on sign in page and clicks sign in | User successfully granted access and redirected to home page | &check;  |
+|  | Navigate to [Blog Page](https://bryansmullen-designr.herokuapp.com/blog/)  | Blog page should render | &check; |
+|  | Click New Blog Entry Button | User should be redirected to add new blog entry page | &check; |
+|  | Enter blog title and content and click add blog entry | User should be redirected to blog list page and new content should display correctly | &check; |
+| 3.3 | Navigate to [Admin Page](https://bryansmullen-designr.herokuapp.com/admin)  | Admin Login page should render | &check; |
+| | Enter superuser credentials and click log in | User should be redirected to site backend | &check; |
+| | Click on the add button next to Services | Add service page should be displayed | &check; |
+| | Add a title, content, price, and image of the portfolio artwork desired and click save | User should be redirected to list of services and success message should display  | &check; |
+| | Navigate to [Services Page](https://bryansmullen-designr.herokuapp.com/services/) | Services page should display with new content | &check; |
+| 3.3 | Navigate to [Admin Page](https://bryansmullen-designr.herokuapp.com/admin)  | Admin Login page should render | &check; |
+| | Enter superuser credentials and click log in | User should be redirected to site backend | &check; |
+| | Click on Orders under the Checkout Heading | List of previous orders should display | &check; |
+| | Click on any order | Details of order including contact details for the customer should display | &check; |
 
 ---
 Navigate to [Home Page](https://bryansmullen-designr.herokuapp.com/*)  | Home page should render | &check; |
@@ -348,24 +362,65 @@ checkout/forms.py fails pep8 validation over a line that is 80 characters long. 
 
 This project is deployed on Heroku, which can be accessed at [Designr](https://github.com/bryansmullen/designr) or [Designr Deployed Version](https://bryansmullen-designr.herokuapp.com/). The deployment is linked to the Master Branch of the repo, and will automatically update the deployment when any changes are committed to this branch of the remote repository. The deployment procedure is documented below.
 
-- Project was initialized as a git repository
-- A remote repository was linked to the project using github
-- Code was commited to git and pushed to github taking care to ignore sensitive files, for example .env, as well as venv folders and notes files
-- It was ensured that both an up-to-date requirements.txt file was maintained, and a Procfile to configure heroku also existed
-- A remote repository was created for the project using heroku
-- Environment variables from the local environment were added to heroku's config variables
-- Heroku was configured to automatically deploy from the github master branch
+# Prerequisites
+You must have gitpod account to clone a development version of this repository. Please refer to the [Gitpod Docs](https://www.gitpod.io/docs). You will also require the [Gitpod Browser Extension](https://www.gitpod.io/docs/browser-extension/). Finally you will require a stripe account and an aws account. You will require a [heroku account](https://dashboard.heroku.com/apps) and an [aws account](https://aws.amazon.com/) also.
+
+1. Navigate to Gitpod, and create a new workspace using the python-django template. If the terminal starts a process automatically, quit out of it with `ctrl + c`
+2. Remove the files and folders that are pre populated using `rm -rf *` in the gitpod workspace's terminal.
+3. Clone the repository using the command `git clone https://github.com/bryansmullen/designr.git`
+4. Move the contents of the cloned folder out to the root directory using `mv designr/* .` and then delete the remaining directory `designr`
+5. Add all project files to the git repo by running `git add .`. Commit the changes by running `git commit -m 'initial commit'`
+6. Add the heroku cli to your gitpod workspace by running `curl https://cli-assets.heroku.com/install.sh | sh`
+7. Log into your heroku account via the heroku cli by running `heroku login -i` and entering your credentials
+8. Create a new heroku application by running `heroku create` in the terminal. This will create a new application and generate a random name for it.
+9. Navigate to your heroku account in your browser and click on the newly created application. Navigate to the resources tab, and in the search box for `add-ons` search for `Heroku Postgres`. Select `Hobby Dev -Free
+10. Return to your heroku dashboard and navigate to the settings tab of your application. Under `Config Vars` click `Reveal Config Vars`.
+11. In Config Vars set a new variable key SECRET_KEY with a value of a random string. You can find an auto generated secret key by searching google for secret key generator. Example: `https://randomkeygen.com/`
+10. Navigate to your stripe dashboard, and locate the options for 'developers' and navigate to this page. Ensure 'TEST MODE' is enabled.
+11. Navigate to API Keys and copy the publishable key, and paste it into herokus Config Vars with a key of STRIPE_PUBLIC_KEY. Reveal the secret key and paste this with a key of STRIPE_SECRET_KEY.
+12. On your heroku dashboard click on `Open App`. This should display a temporary Welcome Screen. Copy the URL from your address bar. Example: `https://###################.herokuapp.com`
+13. In stripe navigate to 'webhooks' and create a new endpoint. Paste the url you just copied and append `checkout/wh/` to the end of it. Example `https://###################.herokuapp.com/checkout/wh/`. Click on `select events`, and from the dropdown select all payment_intent and charge events. Click Add events. Finally click `Add webhook`
+14. On the created webhook, click to reveal the `signing secret`, copy this, and paste it into Heroku's Config Vars with a Key of STRIPE_WH_SECRET
+15. Navigate to your aws account. Locate the s3 service and create a new bucket. Allow public access. Click on Create Bucket.
+16. Click on the new bucket and navigate to `permissions`. Under `Bucket Policy` click edit. Copy the bucket ARN. Find the button for `Generate Bucket Policy`. From this new window select the type of policy as `s3 bucket policy`. Under principal enter `*`. Under Actions select `GetObject`. Under Amazon Resource Name paste the value copied from your bucket name. Confirm these options and copy out the generated bucket policy. Return to the bucket policy creation and paste this in. Finally under `Resource` append `/*` to the end of your ARN to ensure you can access all resources in this bucket. Click save changes to save this bucket policy.
+17. In the AWS Console, on the top right of the screen, click your user name. The dropdown has an option to view security credentials. Under `Your Security Credentials` click the drop down for `Access Keys (access key ID and secret key access)`. Click the option to create new access key, and then show the access key. Copy the access key id and return to heroku config vars, and paste this value in with the key AWS_ACCESS_KEY_ID. Then return to aws and copy the secret access key and paste this into herokus config vars with the key AWS_SECRET_ACCESS_KEY
+18. Add an additional key USE_AWS and set the value to TRUE
+19. Add the domain of your heroku app to the `allowed hosts` section of the `main/settings.py` file. Example: `###################.herokuapp.com`
+20. Build the application by running `git push heroku main`
+21. In the terminal, quit any running process with ctrl + c. Migrate the database using `heroku run python manage.py migrate`
+22. Create a superuser by running `heroku run python manage.py createsuperuser` and following the prompts in the terminal
+23. Navigate to `https://##############.heroku.com/admin` (ie - your instance appended with `/admin`) to log into the admin panel with your new superuser
+24. Navigate to Accounts => Email Addresses. Select your superuser. Click to enable both `Verified` and `Primary`. Click Save.
+25. To seed your data, navigate to Portfolio => Portfolio entrys and click on `Add`. Add some seed information by adding a title, content and image file for data you wish to display as part of the portfolio. Similarly Services must be seeded from the backend by navigating to Services => Services and clicking Add. Add as many services as you wish to be available.
+
 
 [BACK TO CONTENTS](#Contents)
 
-## Cloning a Local Version
+## Cloning a Development Version
 
 # Prerequisites
-You must have git installed on your local environment to clone a local version of this repository. You will also require python and pip in your local environment.
+You must have gitpod account to clone a development version of this repository. Please refer to the [Gitpod Docs](https://www.gitpod.io/docs). You will also require the [Gitpod Browser Extension](https://www.gitpod.io/docs/browser-extension/). Finally you will require a stripe account and an aws account.
 
-1. In your terminal, run `git clone https://github.com/bryansmullen/designr.git` to clone the repository into a new folder on your machine
-
-
+1. Navigate to Gitpod, and create a new workspace using the python-django template. If the terminal starts a process automatically, quit out of it with `ctrl + c`
+2. Remove the files and folders that are pre populated using `rm -rf *` in the gitpod workspace's terminal. You will also need to delete the .gitignore
+3. Clone the repository using the command `git clone https://github.com/bryansmullen/designr.git`
+4. Move the contents of the cloned folder out to the root directory using `mv designr/* .` and then delete the remaining directory `designr`
+5. Install project dependancies using `pip3 install -r requirements.txt`
+6. Rename main/sampleenvfile to main/.env using the command `mv ./main/sampleenvfile ./main/.env`
+7. In ./main/.env for development version delete DATABASE_URL and USE_AWS environment variables, as well as AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+8. In ./main/.env set DEVELOPMENT=TRUE
+9. In ./main/.env set SECRET_KEY= to a random string. You can find an auto generated secret key by searching google for secret key generator. Example: `https://randomkeygen.com/`
+10. Navigate to your stripe dashboard, and locate the options for 'developers' and navigate to this page. Ensure 'TEST MODE' is enabled.
+11. Navigate to API Keys and copy the publishable key, and paste it into ./main/.env as the value for STRIPE_PUBLIC_KEY. Reveal the secret key and paste this as the value for STRIPE_SECRET_KEY
+12. In your terminal find your development domain by running `python3 manage.py runserver`, and then ctrl + click on the url that is displayed (http://127.0.0.1:8000). This will open a new browser window with the public facing url of the development application. Example: `https://8000-###################.gitpod.io`. Copy this url.
+13. In stripe navigate to 'webhooks' and create a new endpoint. Paste the url you just copied and append `checkout/wh/` to the end of it. Example `https://8000-###################.gitpod.io/checkout/wh/`. Click on `select events`, and from the dropdown select all payment_intent and charge events. Click Add events. Finally click `Add webhook`
+14. On the created webhook, click to reveal the `signing secret`, copy this, and paste it into ./main/.env as the value for STRIPE_WH_SECRET
+15. In the terminal, quit the running process with ctrl + c. Migrate the database using `python3 manage.py migrate`
+16. Create a superuser by running `python3 manage.py createsuperuser` and following the prompts in the terminal
+17. Run the server using `python3 manage.py runserver`. Ctrl + click on the url that is displayed to launch the development application
+18. Navigate to `https://8000-##############.gitpod.io/admin` (ie - your instance appended with `/admin`) to log into the admin panel with your new superuser
+19. Navigate to Accounts => Email Addresses. Select your superuser. Click to enable both `Verified` and `Primary`. Click Save.
+20. To seed your data, navigate to Portfolio => Portfolio entrys and click on `Add`. Add some seed information by adding a title, content and image file for data you wish to display as part of the portfolio. Similarly Services must be seeded from the backend by navigating to Services => Services and clicking Add. Add as many services as you wish to be available.
 
 # Acknowledgements
 

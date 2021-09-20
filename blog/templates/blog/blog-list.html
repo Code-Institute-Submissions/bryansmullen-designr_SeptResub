@@ -33,9 +33,11 @@
         </div>
         <hr />
         {% endfor %}
+        {% if request.user.is_staff %}
         <a href="{% url 'blog_new' %}" class="btn red darken-4"
           >New Blog Entry</a
         >
+        {% endif %}
       </div>
     </div>
   </div>
