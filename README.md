@@ -9,6 +9,11 @@ new work.
 This website is for `users` seeking to hire a graphic designer for new custom artwork, as well as for
 a `business owner` to showcase their work, accept new commissions, and deliver completed artwork to their clients. The blog portion of the website is designed for the `business owner` to generate interest and traffic to the website and could potentially be managed by a `blog administrator`.
 
+## Design
+
+This application was designed with both a site owner and a user in mind. Users would typically interact exclusively with the front end - first navigating to the home page, perusing the designers public portfolio or blog, and choosing whether to register to order custom designs from the site owner. Upon registering this opens up the services tab where they can add services they wish to purchase, as well as the cart/checkout flow which allows them to pay for these services in the UI. Additionally they have access to their profile page which allows them to manage their email and password for authentication and to view a list of past orders.
+
+The site owner would typically interact with both the front and back end. They can add blog posts from the front end, and see the site from the point of view of a regular user. To add new services or portfolio items they would navigate to the backend and manually seed the data. It is currently deemed unnecessary to build a separate frontend here when the backend already provides an easy to use user interface for this purpose. Using the backend they can also readily see a list of existing orders that they can set about working with, which includes contact details for each user to get in touch and discuss exact creative requirements.
 
 ## User Stories
 
@@ -52,7 +57,9 @@ a `business owner` to showcase their work, accept new commissions, and deliver c
 
 ## Typography & Color Scheme
 
-TODO
+As this was primarily intended to showcase design work, a blocky cursive font was chosen to represent style - 'Lobster'. This was paired with a bold blocky curves-and-corners background image in bright lobster red - a sideways reference to the font name. This was tempered by adding an overlay so as not to overly distract from the main content.  
+
+To aid legibility high contrast was maintained by making sure either black or red text was used on white backgrounds, wheras white text was used on coloured backgrounds. This was then visually tested using Chrome's ability to render a webpage as it would be experienced for users with Protanopia, Deuteranopia, Tritanopia, and Achromatopsia. At all times the core content remained clear and legible.
 
 ## Data Structure
 
@@ -80,7 +87,6 @@ Wireframes are available [here](./docs/wireframes/wireframes.pdf)]
 
 - In the absence of a specific, detailed and comprehensive module on automated testing provided by the course, manual testing has been opted for. It is assumed that this will not be penalised.
 - The deployed, live version of the site was utilised for the tests.
-
 
 
 ## Tests
@@ -418,35 +424,50 @@ The following browsers are tested:
 | 2.16 | https://bryansmullen-designr.herokuapp.com/checkout/checkout_success/645599EC2D994B9490B49013EDBDACD9 | authenticated user | YES | &check; |
 | 2.17 | https://bryansmullen-designr.herokuapp.com/services/ | authenticated user | YES | &check; |
 | 2.18 | https://bryansmullen-designr.herokuapp.com/profiles/ | authenticated user | YES | &check; |
-| 3.1 | https://bryansmullen-designr.herokuapp.com/ | authenticated superuser | NO | &check; |
-| 3.2 | https://bryansmullen-designr.herokuapp.com/about | authenticated superuser | NO | &check; |
-| 3.3 | https://bryansmullen-designr.herokuapp.com/portfolio/ | authenticated superuser | NO | &check; |
+| 3.1 | https://bryansmullen-designr.herokuapp.com/ | authenticated superuser | YES | &check; |
+| 3.2 | https://bryansmullen-designr.herokuapp.com/about | authenticated superuser | YES | &check; |
+| 3.3 | https://bryansmullen-designr.herokuapp.com/portfolio/ | authenticated superuser | YES | &check; |
 | 3.4 | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | authenticated superuser | NO | &check; |
 | 3.5 | https://bryansmullen-designr.herokuapp.com/accounts/login/ | authenticated superuser | NO | &check; |
-| 3.6 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/ | authenticated superuser | NO | &check; |
-| 3.7 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/done/ | authenticated superuser | NO | &check; |
-| 3.8 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/ | authenticated superuser | NO | &check; |
-| 3.9 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/MTE:1mRwWt:4TTj7Ta4nidKFInclh8AFKP6MO21xBlksifxr9LfCY4/ | authenticated superuser | NO | &check; |
-| 3.10 | https://bryansmullen-designr.herokuapp.com/blog/ | authenticated superuser | NO | &check; |
-| 3.11 | https://bryansmullen-designr.herokuapp.com/blog/new/ | authenticated superuser | NO | &check; |
-| 3.12 | https://bryansmullen-designr.herokuapp.com/blog/edit/1/ | authenticated superuser | NO | &check; |
-| 3.13 | https://bryansmullen-designr.herokuapp.com/blog/delete/1/  | authenticated superuser | NO | &check; |
-| 3.14 | https://bryansmullen-designr.herokuapp.com/cart/ | authenticated superuser | NO | &check; |
-| 3.15 | https://bryansmullen-designr.herokuapp.com/checkout/   | authenticated superuser | NO | &check; |
-| 3.16 | https://bryansmullen-designr.herokuapp.com/checkout/checkout_success/645599EC2D994B9490B49013EDBDACD9 | authenticated superuser | NO | &check; |
-| 3.17 | https://bryansmullen-designr.herokuapp.com/services/ | authenticated superuser | NO | &check; |
-| 3.18 | https://bryansmullen-designr.herokuapp.com/profiles/ | authenticated superuser | NO | &check; |
+| 3.6 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/ | authenticated superuser | YES | &check; |
+| 3.7 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/done/ | authenticated superuser | YES | &check; |
+| 3.8 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/ | authenticated superuser | YES | &check; |
+| 3.9 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/MTE:1mRwWt:4TTj7Ta4nidKFInclh8AFKP6MO21xBlksifxr9LfCY4/ | authenticated superuser | YES | &check; |
+| 3.10 | https://bryansmullen-designr.herokuapp.com/blog/ | authenticated superuser | YES | &check; |
+| 3.11 | https://bryansmullen-designr.herokuapp.com/blog/new/ | authenticated superuser | YES | &check; |
+| 3.12 | https://bryansmullen-designr.herokuapp.com/blog/edit/1/ | authenticated superuser | YES | &check; |
+| 3.13 | https://bryansmullen-designr.herokuapp.com/blog/delete/1/  | authenticated superuser | YES | &check; |
+| 3.14 | https://bryansmullen-designr.herokuapp.com/cart/ | authenticated superuser | YES | &check; |
+| 3.15 | https://bryansmullen-designr.herokuapp.com/checkout/   | authenticated superuser | YES | &check; |
+| 3.16 | https://bryansmullen-designr.herokuapp.com/checkout/checkout_success/645599EC2D994B9490B49013EDBDACD9 | authenticated superuser | YES | &check; |
+| 3.17 | https://bryansmullen-designr.herokuapp.com/services/ | authenticated superuser | YES | &check; |
+| 3.18 | https://bryansmullen-designr.herokuapp.com/profiles/ | authenticated superuser | YES | &check; |
 
 
 ---
 
 ## Issues
 
-Profiles Page Fails HTML Validation due to stray tags generated automatically by django's forms
-initSidenav.js fails JS Validation - this file is provided by Materialize as is, and therefore works as designed
-stripeElements.js fails JS Validation - this file is created in line with Code Institute tutorials, and due to the complexity of the stripe flow, and the fact that this file currently functions as designed, it has not been edited.
-populate with issues fixed
-checkout/forms.py fails pep8 validation over a line that is 80 characters long. This has been tolerated for legibility reasons
+### Existing Issues Corrected
+
+| Issue # | Issue Communicated | Corrective Action |
+| --- | --- | --- |
+| 1.4 | Inappropriate usage of multiple apps for multiple static pages | Apps now implement models with the exception of 'home' which serves static content by way of landing page etc. In particular portfolio and blog now implement new models | 
+| 1.5 |  Static folder inside main app folder | Static folder has been moved from main app directory into root folder |
+| 1.6	| Numerous Python files fail PEP8 validation; rendered HTML fails validation | Comprehensive HTML, PEP8 as well as CSS, JS testing implemented |
+| 1.9 | Code implementation is limited to the capability provided by the framework and doesn't display mastery in Python language, Project contains no significant custom apps or models beyond what is shown in Boutique Ado | Blog and Portfolio custom apps added which both implement models. In particular custom python code added to dynamically truncate content in blog views |
+| 1.11 | Testing steps are incomprehensible against the user stories, leading to many open bugs | Testing steps now map 1 to 1 to user stories and can be cross referenced by use case # |
+| 2.2 | Lacks custom models; only variations on Boutique Ado models (products renamed to services) | 2 custom models implemented - blog and portfolio |
+| 2.3 | The only forms present are the signup form and the checkout form | Custom form added to add new blog, edit existing blog. In addition there are smaller less obvious forms, eg the delete blog item form. Add and edit forms include validation |
+| 2.4 | Some or most CRUD operations are not functional | Full CRUD demonstrated in particular in blog model. Additionally ability to edit both user email and password added |
+| 3.1 | User are able to register and login without any authentication, The lack of authentication or displaying of any info (including past orders) on the Profile page makes the login functionality redundant; however, the project gates all ecommerce functionality behind a login screen without adequate explanation in the README design section | All auth implemented and comprehensive testing of authorization flow documented in readme. README design section now provides explanation to the logic behind the gating of some functionality. |
+| 5.4 | Few big commits instead of consistent regular commits, messages are generalized | Regular detailed commits implemented for resubmission phase |
+| 5.6 | Missing certain critical section in README file that are required for complete understanding of the application | Deployment section detailed comprehensively in particular paying close attention to aws, stripe and heroku flows where appropriate |
+
+
+
+### Known Issues
+- Profiles Page Fails HTML Validation due to stray tags generated automatically by django's forms
 
 ## Deployment
 
