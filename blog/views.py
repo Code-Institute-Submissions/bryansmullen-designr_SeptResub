@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, reverse
-from django.contrib.auth.decorators import login_required
 from .models import BlogEntry
 from .forms import BlogEntryForm
 from datetime import datetime
