@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/accounts/login/')
 def cart(request):
     """
     Display cart page
@@ -8,6 +10,7 @@ def cart(request):
     return render(request, 'cart/cart.html')
 
 
+@login_required(login_url='/accounts/login/')
 def add_to_cart(request, item_id):
     """
     Add item to cart and display cart page
@@ -24,6 +27,7 @@ def add_to_cart(request, item_id):
     return redirect(cart)
 
 
+@login_required(login_url='/accounts/login/')
 def remove_from_cart(request, item_id):
     """
     Remove item from cart and redirect

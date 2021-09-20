@@ -13,6 +13,9 @@
           <a class="white-text" href="{% url 'portfolio' %}"
             >Check out our portfolio!</a
           >
+          {% if not request.user.is_authenticated %} 
+          <p class="white-text">Create an account to see full range of services and place an order with us!</p>
+          {% endif %}
         </div>
       </div>
     </div>

@@ -377,6 +377,67 @@ The following browsers are tested:
 | 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Invalid Card | Form Should Display Error | &check; |
 | 4.1 | Checkout | https://bryansmullen-designr.herokuapp.com/checkout/ | Expiry In Future | Form Should Display Error | &check; |
 
+### Authentication Testing
+
+| Test Case # | Protected Route | User Role | Expected Access | Pass |
+| --- | --- | --- | --- | --- |
+| 1.1 | https://bryansmullen-designr.herokuapp.com/ | unauthenticated user | YES | &check; |
+| 1.2 | https://bryansmullen-designr.herokuapp.com/about | unauthenticated user | YES | &check; |
+| 1.3 | https://bryansmullen-designr.herokuapp.com/portfolio/ | unauthenticated user | YES | &check; |
+| 1.4 | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | unauthenticated user | YES | &check; |
+| 1.5 | https://bryansmullen-designr.herokuapp.com/accounts/login/ | unauthenticated user | YES | &check; |
+| 1.6 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/ | unauthenticated user | YES | &check; |
+| 1.7 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/done/ | unauthenticated user | YES | &check; |
+| 1.8 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/ | unauthenticated user | YES | &check; |
+| 1.9 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/MTE:1mRwWt:4TTj7Ta4nidKFInclh8AFKP6MO21xBlksifxr9LfCY4/ | unauthenticated user | YES | &check; |
+| 1.10 | https://bryansmullen-designr.herokuapp.com/blog/ | unauthenticated user | YES | &check; |
+| 1.10 | https://bryansmullen-designr.herokuapp.com/blog/1 | unauthenticated user | YES | &check; |
+| 1.11 | https://bryansmullen-designr.herokuapp.com/blog/new/ | unauthenticated user | NO | &check; |
+| 1.12 | https://bryansmullen-designr.herokuapp.com/blog/edit/1/ | unauthenticated user | NO | &check; |
+| 1.13 | https://bryansmullen-designr.herokuapp.com/blog/delete/1/  | unauthenticated user | NO | &check; |
+| 1.14 | https://bryansmullen-designr.herokuapp.com/cart/ | unauthenticated user | NO | &check; |
+| 1.15 | https://bryansmullen-designr.herokuapp.com/checkout/   | unauthenticated user | NO | &check; |
+| 1.16 | https://bryansmullen-designr.herokuapp.com/checkout/checkout_success/645599EC2D994B9490B49013EDBDACD9 | unauthenticated user | NO | &check; |
+| 1.17 | https://bryansmullen-designr.herokuapp.com/services/ | unauthenticated user | NO | &check; |
+| 1.18 | https://bryansmullen-designr.herokuapp.com/profiles/ | unauthenticated user | NO | &check; |
+| 2.1 | https://bryansmullen-designr.herokuapp.com/ | authenticated user | NO | &check; |
+| 2.2 | https://bryansmullen-designr.herokuapp.com/about | authenticated user | NO | &check; |
+| 2.3 | https://bryansmullen-designr.herokuapp.com/portfolio/ | authenticated user | NO | &check; |
+| 2.4 | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | authenticated user | NO | &check; |
+| 2.5 | https://bryansmullen-designr.herokuapp.com/accounts/login/ | authenticated user | NO | &check; |
+| 2.6 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/ | authenticated user | NO | &check; |
+| 2.7 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/done/ | authenticated user | NO | &check; |
+| 2.8 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/ | authenticated user | NO | &check; |
+| 2.9 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/MTE:1mRwWt:4TTj7Ta4nidKFInclh8AFKP6MO21xBlksifxr9LfCY4/ | authenticated user | NO | &check; |
+| 2.10 | https://bryansmullen-designr.herokuapp.com/blog/ | authenticated user | NO | &check; |
+| 2.11 | https://bryansmullen-designr.herokuapp.com/blog/new/ | authenticated user | NO | &check; |
+| 2.12 | https://bryansmullen-designr.herokuapp.com/blog/edit/1/ | authenticated user | NO | &check; |
+| 2.13 | https://bryansmullen-designr.herokuapp.com/blog/delete/1/  | authenticated user | NO | &check; |
+| 2.14 | https://bryansmullen-designr.herokuapp.com/cart/ | authenticated user | NO | &check; |
+| 2.15 | https://bryansmullen-designr.herokuapp.com/checkout/   | authenticated user | NO | &check; |
+| 2.16 | https://bryansmullen-designr.herokuapp.com/checkout/checkout_success/645599EC2D994B9490B49013EDBDACD9 | authenticated user | NO | &check; |
+| 2.17 | https://bryansmullen-designr.herokuapp.com/services/ | authenticated user | NO | &check; |
+| 2.18 | https://bryansmullen-designr.herokuapp.com/profiles/ | authenticated user | NO | &check; |
+| 3.1 | https://bryansmullen-designr.herokuapp.com/ | authenticated superuser | NO | &check; |
+| 3.2 | https://bryansmullen-designr.herokuapp.com/about | authenticated superuser | NO | &check; |
+| 3.3 | https://bryansmullen-designr.herokuapp.com/portfolio/ | authenticated superuser | NO | &check; |
+| 3.4 | https://bryansmullen-designr.herokuapp.com/accounts/signup/ | authenticated superuser | NO | &check; |
+| 3.5 | https://bryansmullen-designr.herokuapp.com/accounts/login/ | authenticated superuser | NO | &check; |
+| 3.6 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/ | authenticated superuser | NO | &check; |
+| 3.7 | https://bryansmullen-designr.herokuapp.com/accounts/password/reset/done/ | authenticated superuser | NO | &check; |
+| 3.8 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/ | authenticated superuser | NO | &check; |
+| 3.9 | https://bryansmullen-designr.herokuapp.com/accounts/confirm-email/MTE:1mRwWt:4TTj7Ta4nidKFInclh8AFKP6MO21xBlksifxr9LfCY4/ | authenticated superuser | NO | &check; |
+| 3.10 | https://bryansmullen-designr.herokuapp.com/blog/ | authenticated superuser | NO | &check; |
+| 3.11 | https://bryansmullen-designr.herokuapp.com/blog/new/ | authenticated superuser | NO | &check; |
+| 3.12 | https://bryansmullen-designr.herokuapp.com/blog/edit/1/ | authenticated superuser | NO | &check; |
+| 3.13 | https://bryansmullen-designr.herokuapp.com/blog/delete/1/  | authenticated superuser | NO | &check; |
+| 3.14 | https://bryansmullen-designr.herokuapp.com/cart/ | authenticated superuser | NO | &check; |
+| 3.15 | https://bryansmullen-designr.herokuapp.com/checkout/   | authenticated superuser | NO | &check; |
+| 3.16 | https://bryansmullen-designr.herokuapp.com/checkout/checkout_success/645599EC2D994B9490B49013EDBDACD9 | authenticated superuser | NO | &check; |
+| 3.17 | https://bryansmullen-designr.herokuapp.com/services/ | authenticated superuser | NO | &check; |
+| 3.18 | https://bryansmullen-designr.herokuapp.com/profiles/ | authenticated superuser | NO | &check; |
+
+
 ---
 
 ## Issues

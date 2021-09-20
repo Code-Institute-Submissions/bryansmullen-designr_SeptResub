@@ -8,6 +8,8 @@
       <div class="card">
         <div class="card-content">
           <h3 class="text-center">Profile</h3>
+          <a href="{% url 'account_email' %}" class="btn red darken-3 white-text">Update Email Address</a>
+          <a href="{% url 'account_change_password' %}" class="btn red darken-3 white-text">Change Password</a>
           <p>Default Billing Information</p>
           <form action="{% url 'profile' %}" method="POST">
             {% csrf_token %} {{ form }}

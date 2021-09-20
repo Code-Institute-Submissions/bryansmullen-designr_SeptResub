@@ -10,8 +10,10 @@ from .forms import OrderForm
 from .models import OrderLineItem, Order
 from profiles.models import UserProfile
 import json
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/accounts/login/')
 @require_POST
 def cache_checkout_data(request):
     """
@@ -142,6 +144,7 @@ def checkout(request):
         return render(request, template, context)
 
 
+@login_required(login_url='/accounts/login/')
 def checkout_success(request, order_number):
     """
     Display checkout success page
