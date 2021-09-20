@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import UserProfile
 from .forms import UserProfileForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     """ Display the users profile """
     profile = get_object_or_404(UserProfile, user=request.user)
