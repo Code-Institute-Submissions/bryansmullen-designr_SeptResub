@@ -67,7 +67,7 @@ The database schema of the relational database is described visually in an ERD c
 
 ## Wireframes
 
-Wireframes are available [here](./docs/wireframes/wireframes.pdf)]
+Wireframes are available [here](./docs/wireframes/wireframes.pdf)
 
 ## Technologies Used
 
